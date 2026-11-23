@@ -58,19 +58,32 @@ h2 em{font-style:normal;color:var(--copper)}
 /* ---------- 1 TITLE ---------- */
 .s-title{padding:0;background:linear-gradient(#0B1017 0%,#131A22 55%,#1B2027 66%)}
 #strata{position:absolute;inset:0;width:1600px;height:900px}
-.title-block{position:absolute;left:150px;top:70px;width:1150px}
-.title-block .eyebrow{font-family:var(--mono);font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:var(--copper2)}
-.title-block h1{font-family:var(--display);font-weight:900;font-size:150px;line-height:.86;margin:18px 0 0;letter-spacing:-.005em;text-transform:uppercase}
+.title-block{position:absolute;left:150px;top:44px;width:1000px}
+.title-block .eyebrow{display:flex;flex-direction:column;gap:6px}
+.title-block .eyebrow b{font-family:var(--mono);font-weight:500;font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:var(--copper2)}
+.title-block .eyebrow .mn{font-size:32px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+.title-block h1{font-family:var(--display);font-weight:900;font-size:142px;line-height:.86;margin:12px 0 0;letter-spacing:-.005em;text-transform:uppercase}
 .title-block h1 span{display:block;white-space:nowrap}
 .title-block h1 span:last-child{color:transparent;-webkit-text-stroke:2px var(--copper);background:linear-gradient(90deg,var(--copper),var(--gold),var(--copper));-webkit-background-clip:text;background-clip:text;background-size:200% 100%;animation:sheen 6s linear infinite}
 @keyframes sheen{to{background-position:-200% 0}}
-.title-block .sub{font-size:32px;margin:20px 0 0;color:var(--ink);font-weight:500}
-.title-block .tags{display:flex;gap:12px;margin-top:22px}
-.tag{font-family:var(--mono);font-size:16px;border:1px solid var(--line);padding:6px 12px;border-radius:999px;color:var(--mute)}
+.title-block .sub{font-size:31px;margin:16px 0 0;color:var(--ink);font-weight:500}
+.by{display:flex;align-items:center;gap:14px;margin-top:12px;font-family:var(--mono);font-size:22px;color:var(--mute);letter-spacing:.12em}
+.by b{font-family:var(--display);font-weight:900;font-size:40px;line-height:1;letter-spacing:.06em;color:#0E1114;background:linear-gradient(90deg,var(--copper),var(--gold));padding:2px 16px 0;border-radius:6px}
+.biz{box-sizing:border-box;position:absolute;left:1170px;top:74px;width:380px;border:1px solid var(--line);border-radius:14px;padding:22px 26px 20px;background:rgba(14,17,20,.55);backdrop-filter:blur(3px)}
+.biz .bz-h{font-family:var(--mono);font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--copper2);margin-bottom:10px}
+.biz .bz-r{display:flex;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding:8px 0 4px}
+.biz .bz-n{font-family:var(--display);font-weight:900;font-size:84px;line-height:1;min-width:170px;color:var(--ink)}
+.biz .bz-r:nth-of-type(2) .bz-n{color:var(--gold)}
+.biz .bz-r>span:last-child{font-size:21px;color:var(--mute);line-height:1.2}
+.title-block .tags,.biz .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{font-family:var(--mono);font-size:15px;border:1px solid var(--line);padding:5px 11px;border-radius:999px;color:var(--mute)}
 .tag i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:1px}
-.truck{position:absolute;left:0;top:478px;width:230px;animation:drive 16s linear infinite}
-.truck .wheel{animation:spin 1s linear infinite;transform-box:fill-box;transform-origin:center}
-@keyframes drive{0%{transform:translateX(-260px)}100%{transform:translateX(1120px)}}
+.truck{position:absolute;left:0;top:0;overflow:visible;will-change:transform;pointer-events:none}
+.truck.tA{width:211px;height:120px;z-index:3}
+.truck.tB{width:150px;height:85px;z-index:2;opacity:.8}
+.truck .wheel{animation:spin 1.9s linear infinite;transform-box:fill-box;transform-origin:center}
+.truck .beacon{animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
 .strata-label{position:absolute;font-family:var(--mono);font-size:14px;color:rgba(238,232,223,.6);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
 .strata-label::before{content:"";width:34px;height:1px;background:rgba(238,232,223,.45)}
 
@@ -568,26 +581,45 @@ h2 em{font-style:normal;color:var(--copper)}
   <div id="wipe"></div>
 
   <!-- 1 TITLE -->
-  <section class="slide s-title active" data-notes="Open strong: everything Mongolia exports starts in the ground under our feet. Today we'll go from the surface down 1.3 km, then look at what it means for business.">
+  <section class="slide s-title active" data-notes="Open strong. This is the Mongolian Culture and Business Fair, so start with Mongolia: our biggest business is what lies under our steppe. Mining is over 90 percent of exports and about a quarter of the economy. Today, by 12C, we go from the surface down 1.3 km, then look at what it means for business.">
     <canvas id="strata" width="1600" height="900"></canvas>
-    <svg class="truck" viewBox="0 0 230 124" aria-hidden="true">
-      <path d="M6 22 L150 14 L162 70 L22 74 Z" fill="#E8B94A"/>
-      <path d="M22 22 Q60 -6 100 10 Q130 0 148 16 L150 22 Z" fill="#5a3a28"/>
-      <circle cx="70" cy="8" r="5" fill="#E07A3F"/><circle cx="104" cy="6" r="4" fill="#F4A86B"/>
-      <rect x="160" y="36" width="50" height="38" rx="4" fill="#E8B94A"/>
-      <rect x="170" y="43" width="28" height="15" rx="2" fill="#2A3B4D"/>
-      <rect x="14" y="72" width="200" height="12" fill="#3A3F45"/>
-      <g class="wheel"><circle cx="56" cy="98" r="24" fill="#16191C"/><circle cx="56" cy="98" r="9" fill="#9AA3A8"/><path d="M56 76v44M34 98h44" stroke="#2A2F35" stroke-width="3"/></g>
-      <g class="wheel"><circle cx="180" cy="98" r="24" fill="#16191C"/><circle cx="180" cy="98" r="9" fill="#9AA3A8"/><path d="M180 76v44M158 98h44" stroke="#2A2F35" stroke-width="3"/></g>
+    <svg class="truck tA" id="truckA" viewBox="0 0 320 182" aria-hidden="true">
+      <defs>
+        <linearGradient id="tyel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7CE5E"/><stop offset="1" stop-color="#D49A2E"/></linearGradient>
+        <linearGradient id="tbeam" x1="0" x2="1"><stop offset="0" stop-color="#FFF1BE" stop-opacity=".6"/><stop offset="1" stop-color="#FFF1BE" stop-opacity="0"/></linearGradient>
+        <pattern id="haz" width="18" height="9" patternUnits="userSpaceOnUse" patternTransform="skewX(-30)"><rect width="9" height="9" fill="#15181B"/></pattern>
+      </defs>
+      <polygon points="294,108 470,70 470,150" fill="url(#tbeam)"/>
+      <rect x="30" y="102" width="250" height="20" rx="3" fill="#2B3036"/>
+      <path d="M18 104 L10 44 L20 34 L212 20 L262 28 L266 40 L238 48 L232 104 Z" fill="url(#tyel)"/>
+      <path d="M14 42 Q36 4 88 12 Q128 -6 176 10 Q202 6 214 20 L20 36 Z" fill="#5A3A28"/>
+      <path d="M40 24 Q70 8 100 14" stroke="#7B5238" stroke-width="3" fill="none"/>
+      <circle cx="58" cy="14" r="4" fill="#E07A3F"/><circle cx="104" cy="8" r="3.5" fill="#F4A86B"/><circle cx="150" cy="10" r="4" fill="#C9672F"/><circle cx="186" cy="14" r="3" fill="#E8B94A"/>
+      <g stroke="#A5761F" stroke-width="3" opacity=".7"><path d="M62 36V102M104 33V102M146 30V102M188 27V102"/></g>
+      <rect x="22" y="90" width="206" height="9" fill="url(#haz)" opacity=".9"/>
+      <rect x="236" y="54" width="48" height="50" rx="5" fill="url(#tyel)"/>
+      <rect x="250" y="60" width="28" height="22" rx="3" fill="#1F3447"/><path d="M254 78 L266 62 L272 62 L260 78Z" fill="#fff" opacity=".18"/>
+      <path d="M240 104V90M246 104V90M252 104V90" stroke="#9A6D1B" stroke-width="2"/>
+      <circle class="beacon" cx="246" cy="24" r="5" fill="#FF7A2F"/>
+      <rect x="276" y="94" width="20" height="22" rx="3" fill="#3A3F45"/><rect x="288" y="99" width="9" height="9" rx="2" fill="#FFF3C4"/>
+      <path d="M62 108 Q100 78 138 108Z M214 108 Q252 78 290 108Z" fill="#23282D"/>
+      <g class="wheel"><circle cx="100" cy="144" r="38" fill="#14171A"/><circle cx="100" cy="144" r="34" fill="none" stroke="#2C3238" stroke-width="5" stroke-dasharray="7 6"/><circle cx="100" cy="144" r="17" fill="#8F9AA2"/><circle cx="100" cy="144" r="7" fill="#3A3F45"/><path d="M100 118v52M74 144h52M82 126l36 36M118 126l-36 36" stroke="#59626A" stroke-width="3"/></g>
+      <g class="wheel"><circle cx="248" cy="144" r="38" fill="#14171A"/><circle cx="248" cy="144" r="34" fill="none" stroke="#2C3238" stroke-width="5" stroke-dasharray="7 6"/><circle cx="248" cy="144" r="17" fill="#8F9AA2"/><circle cx="248" cy="144" r="7" fill="#3A3F45"/><path d="M248 118v52M222 144h52M230 126l36 36M266 126l-36 36" stroke="#59626A" stroke-width="3"/></g>
     </svg>
-    <div class="strata-label" style="left:1310px;top:588px">Surface · 0 m</div>
+    <div class="strata-label" style="left:1330px;top:608px">Surface · 0 m</div>
     <div class="strata-label" style="left:1310px;top:738px">Coking coal seam</div>
     <div class="strata-label" style="left:1310px;top:842px">Copper-gold ore · ~1.3 km</div>
     <div class="title-block">
-      <div class="eyebrow a">Culture &amp; Business Fair 2026 · Focus area: Mining</div>
+      <div class="eyebrow a"><b>Mongolian Culture &amp; Business Fair 2026</b><span class="mn">Монголын соёл · Монголын бизнес</span></div>
       <h1 class="a" style="--d:150"><span>Beneath</span><span>the Steppe</span></h1>
       <p class="sub a" style="--d:450">Mining — Mongolia's Resources and Opportunities</p>
-      <div class="tags a" style="--d:650">
+      <div class="by a" style="--d:650"><span>by</span><b>12C</b></div>
+    </div>
+    <div class="biz a l" style="--d:500">
+      <div class="bz-h">Mongolia's biggest business</div>
+      <div class="bz-r"><span class="bz-n"><span data-count="92">0</span>%</span><span>of exports are minerals</span></div>
+      <div class="bz-r"><span class="bz-n"><span data-count="25">0</span>%</span><span>of the economy (GDP)</span></div>
+      <div class="tags">
         <span class="tag"><i style="background:var(--copper)"></i>Copper</span>
         <span class="tag"><i style="background:#555c64;border:1px solid #9AA3A8"></i>Coal</span>
         <span class="tag"><i style="background:var(--gold)"></i>Gold</span>
@@ -1182,6 +1214,25 @@ const cv=document.getElementById('strata'),cx=cv.getContext('2d'),W=1600,H=900,G
 const off=document.createElement('canvas');off.width=W;off.height=H;const o=off.getContext('2d');
 const bands=[[G,'#6B5236'],[650,'#4E3B2A'],[700,'#3A3330'],[738,'#191B1F'],[778,'#2E3238'],[830,'#22252A'],[870,'#17191C'],[H+20,null]];
 const edge=(base,i,x)=>i===0?base+Math.sin(x/160)*3:base+Math.sin(x/(90+i*25)+i)*8+Math.sin(x/37+i*2)*3;
+// scene: sunrise glow, mountains, gers
+(function(){
+  const g=o.createRadialGradient(1400,560,10,1400,560,330);g.addColorStop(0,'rgba(244,168,107,.55)');g.addColorStop(.45,'rgba(224,122,63,.18)');g.addColorStop(1,'rgba(224,122,63,0)');
+  o.fillStyle=g;o.fillRect(900,200,700,420);
+  o.fillStyle='rgba(244,168,107,.9)';o.beginPath();o.arc(1400,566,74,0,6.283);o.fill();
+  const ridge=(base,amp,ph,col)=>{o.beginPath();o.moveTo(0,G+2);for(let x=0;x<=W;x+=10)o.lineTo(x,base-amp*(.5+.5*Math.sin(x/150+ph))-amp*.6*Math.sin(x/53+ph*2)*.5-amp*.35*Math.abs(Math.sin(x/270+ph)));o.lineTo(W,G+2);o.closePath();o.fillStyle=col;o.fill();};
+  ridge(566,46,1.2,'#1E2733');ridge(584,30,3.4,'#161D26');
+  // gers
+  const ger=(x,sc)=>{o.save();o.translate(x,G);o.scale(sc,sc);
+    o.fillStyle='#D9D0BE';o.fillRect(-38,-28,76,28);
+    o.fillStyle='#EFE8D8';o.beginPath();o.moveTo(-47,-26);o.quadraticCurveTo(-34,-52,0,-60);o.quadraticCurveTo(34,-52,47,-26);o.closePath();o.fill();o.strokeStyle='#B9AE98';o.lineWidth=1.2;o.beginPath();o.moveTo(-34,-38);o.lineTo(0,-60);o.lineTo(34,-38);o.moveTo(-18,-46);o.lineTo(0,-60);o.lineTo(18,-46);o.stroke();
+    o.fillStyle='#7A3B1E';o.fillRect(-7,-20,14,20);o.fillStyle='#E07A3F';o.fillRect(-7,-20,14,3);
+    o.strokeStyle='#B0A58F';o.lineWidth=1.5;o.beginPath();o.moveTo(-46,-26);o.lineTo(46,-26);o.stroke();
+    o.fillStyle='#E07A3F';o.beginPath();o.arc(0,-62,6,0,6.283);o.fill();o.fillStyle='#3A2A20';o.fillRect(-47,-27,94,3);
+    o.restore();};
+  ger(1430,1);ger(1512,.82);ger(1572,.64);
+  // fence line
+  o.strokeStyle='rgba(238,232,223,.25)';o.lineWidth=2;o.beginPath();o.moveTo(1350,G-8);o.lineTo(1600,G-8);o.stroke();
+})();
 for(let i=0;i<bands.length-1;i++){
   o.beginPath();for(let x=0;x<=W;x+=8)o.lineTo(x,edge(bands[i][0],i,x));
   for(let x=W;x>=0;x-=8)o.lineTo(x,edge(bands[i+1][0],i+1,x)+1);o.closePath();o.fillStyle=bands[i][1];o.fill();
@@ -1211,8 +1262,23 @@ function draw(t){
   cx.shadowBlur=0;
   dust.forEach(d=>{d.x+=d.v;if(d.x>W)d.x=-10;cx.fillStyle='rgba(200,170,130,.18)';cx.beginPath();cx.arc(d.x,d.y+Math.sin(t/800+d.x/50)*4,d.r,0,6.28);cx.fill();});
 }
-function loop(t){if(cur===0||reduce)draw(t);if(!reduce)requestAnimationFrame(loop);}
-draw(0);if(!reduce)requestAnimationFrame(loop);
+/* trucks + dust + smoke */
+const tA=document.getElementById('truckA'),tB=tA.cloneNode(true);tB.removeAttribute('id');tB.classList.remove('tA');tB.classList.add('tB');tA.parentNode.insertBefore(tB,tA);
+tB.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+const TR=[{el:tA,w:211,h:120,sp:84,ph:420,rear:.31,stack:.62,top:G+3},{el:tB,w:150,h:85,sp:60,ph:980,rear:.31,stack:.62,top:G-2}];
+const dp=[];let lastT=0,acc=0;
+const gers=[[1430,1],[1512,.82],[1572,.64]];
+function truckPos(T,t){const L=1380;const x=-300+((T.ph+t/1000*T.sp)%L);return x;}
+function placeTrucks(t){TR.forEach(T=>{const x=truckPos(T,t);const bob=reduce?0:Math.sin(t/140+T.ph)*.8;let op=1;if(x>900)op=Math.max(0,(1060-x)/160);T.x=x;T.op=op;
+  T.el.style.transform=`translate3d(${x}px,${T.top-T.h+bob}px,0)`;T.el.style.opacity=(T.el===tB?.82:1)*op;});}
+function emit(dt){acc+=dt;while(acc>55){acc-=55;TR.forEach(T=>{if(T.op<.2||T.x<-60)return;const k=T.w/211;
+  dp.push({x:T.x+T.w*T.rear+Math.random()*10,y:T.top-3,vx:-14-Math.random()*26,vy:-6-Math.random()*14,r:3*k+Math.random()*3,gr:8*k,life:0,max:1.5+Math.random()*.7,c:'196,164,122',a:.34});
+  if(Math.random()<.5)dp.push({x:T.x+T.w*.30,y:T.top-T.h+8*k,vx:-6-Math.random()*8,vy:-26-Math.random()*14,r:2.5*k,gr:9*k,life:0,max:1.8,c:'70,72,76',a:.35});});}
+  if(Math.random()<.04)gers.forEach(g=>dp.push({x:g[0],y:G-68*g[1],vx:8+Math.random()*8,vy:-22-Math.random()*8,r:3*g[1],gr:12*g[1],life:0,max:3,c:'225,218,205',a:.28}));}
+function drawDust(dt){for(let i=dp.length-1;i>=0;i--){const p=dp[i];p.life+=dt/1000;if(p.life>p.max){dp.splice(i,1);continue;}p.x+=p.vx*dt/1000;p.y+=p.vy*dt/1000;const k=p.life/p.max;
+  cx.fillStyle=`rgba(${p.c},${p.a*(1-k)})`;cx.beginPath();cx.arc(p.x,p.y,p.r+p.gr*k,0,6.283);cx.fill();}}
+function loop(t){if(cur===0||reduce){const dt=Math.min(60,t-lastT||16);lastT=t;draw(t);if(!reduce){emit(dt);drawDust(dt);}placeTrucks(t);}else lastT=t;if(!reduce)requestAnimationFrame(loop);}
+draw(0);if(reduce){TR[0].ph=520;TR[1].ph=1000;}placeTrucks(0);if(!reduce)requestAnimationFrame(loop);
 
 /* ---------- boot ---------- */
 const m=location.hash.match(/^#s(\d+)$/);
