@@ -111,6 +111,37 @@ h2 em{font-style:normal;color:var(--copper)}
 @keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.6);opacity:0}}
 #map text{font-family:var(--mono);font-size:8.5px;fill:var(--ink)}
 #map .grid line{stroke:rgba(238,232,223,.05);stroke-width:.5}
+#map .msize{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform 1.3s cubic-bezier(.34,1.56,.64,1) calc(var(--d)*1ms)}
+.slide.active #map .msize{transform:scale(1)}
+#map .msize .core{animation:breathe 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes breathe{50%{transform:scale(1.06)}}
+#map .msz{font-family:var(--display);font-weight:800;font-size:9px;fill:#0E1114}
+.legend .lv{display:inline-block;font-style:normal;font-family:var(--display);font-weight:800;font-size:22px;color:var(--ink);margin-left:8px}
+.legend .sizekey{display:block!important;grid-template-columns:none}
+.sizekey{font-family:var(--mono);font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;letter-spacing:.04em}
+/* geopolitics */
+.geowrap{display:grid;grid-template-columns:1fr 440px;gap:34px;margin-top:20px;align-items:start}
+#geo{width:100%;height:auto;display:block}
+#geo .sea{fill:#0F1A26} #geo .base{fill:#1A1F25} #geo .ru{fill:#262C33;stroke:#3A424B;stroke-width:1} #geo .cn{fill:#2E2622;stroke:#5A4536;stroke-width:1}
+#geo .nb{fill:#1E2329;stroke:#30363D;stroke-width:.8} #geo .mn{fill:#3A2A1F;stroke:var(--copper);stroke-width:2.2;stroke-linejoin:round}
+#geo .lbl{font-family:var(--mono);font-size:13px;letter-spacing:.22em;fill:rgba(238,232,223,.45);text-transform:uppercase}
+#geo .lbl.big{font-size:20px;fill:rgba(238,232,223,.6)} #geo .lbl.mn{font-size:15px;fill:var(--copper2);stroke:none;letter-spacing:.18em}
+#geo .city{font-family:var(--mono);font-size:12px;fill:var(--ink)}
+#geo .route{fill:none;stroke-linecap:round}
+#geo .r1{stroke:var(--copper);stroke-width:7;opacity:.35} #geo .r2{stroke:#7FA7D9;stroke-width:2.5;stroke-dasharray:6 7;opacity:.7}
+#geo .r3{stroke:#AEB6BD;stroke-width:1.6;stroke-dasharray:3 6;opacity:.7} #geo .r4{stroke:var(--gold);stroke-width:1.6;stroke-dasharray:2 6;opacity:.85}
+#geo .rv{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.8s ease calc(var(--d)*1ms)}
+.slide.active #geo .rv{stroke-dashoffset:0}
+#geo .tag{font-family:var(--display);font-weight:800;font-size:26px}
+#geo .gfade{opacity:0;transition:opacity .7s ease calc(var(--d)*1ms)} .slide.active #geo .gfade{opacity:1}
+#geo .ring{fill:none;stroke:var(--copper);stroke-width:1.5;animation:ringp 2.6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes ringp{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.geoside{display:flex;flex-direction:column;gap:12px}
+.gcard{border:1px solid var(--line);border-radius:12px;padding:13px 18px;background:rgba(20,25,30,.7)}
+.gcard .gn{font-family:var(--display);font-weight:900;font-size:40px;line-height:1;color:var(--ink)}
+.gcard .gn em{font-style:normal;color:var(--copper)}
+.gcard p{margin:6px 0 0;font-size:17px;color:var(--mute);line-height:1.35} .gcard p b{color:var(--ink);font-weight:600}
+.gcard.plan{border-color:var(--copper)} .gcard.plan .gh{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper2)}
 .legend{display:flex;flex-direction:column;gap:16px}
 .legend div{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start}
 .legend i{width:16px;height:16px;border-radius:50%;margin-top:7px}
@@ -676,14 +707,15 @@ h2 em{font-style:normal;color:var(--copper)}
     <div class="mapwrap">
       <svg id="map" viewBox="-10 -10 490 250" aria-label="Map of Mongolia with major mines"></svg>
       <div class="legend">
-        <div class="a r" style="--d:500"><i style="background:var(--copper)"></i><p style="margin:0"><b>Oyu Tolgoi</b><span>Copper and gold · South Gobi</span></p></div>
-        <div class="a r" style="--d:650"><i style="background:var(--copper2)"></i><p style="margin:0"><b>Erdenet</b><span>Copper and molybdenum · north</span></p></div>
-        <div class="a r" style="--d:800"><i style="background:#9AA3A8"></i><p style="margin:0"><b>Tavan Tolgoi</b><span>One of the world's largest coking-coal deposits</span></p></div>
-        <div class="a r" style="--d:950"><i style="background:var(--sky)"></i><p style="margin:0"><b>Khalzan Buregtei</b><span>Rare earths · Khovd province</span></p></div>
+        <div class="a r" style="--d:500"><i style="background:var(--copper)"></i><p style="margin:0"><b>Oyu Tolgoi</b><span>Copper and gold · South Gobi<em class="lv">₮2.3T</em></span></p></div>
+        <div class="a r" style="--d:650"><i style="background:var(--copper2)"></i><p style="margin:0"><b>Erdenet</b><span>Copper and molybdenum · north<em class="lv">₮2.2T</em></span></p></div>
+        <div class="a r" style="--d:800"><i style="background:#9AA3A8"></i><p style="margin:0"><b>Tavan Tolgoi</b><span>Huge coking-coal deposit · ETT<em class="lv">₮1.7T</em></span></p></div>
+        <div class="a r" style="--d:950"><i style="background:var(--sky)"></i><p style="margin:0"><b>Khalzan Buregtei</b><span>Rare earths · Khovd · not yet producing</span></p></div>
         <div class="a r" style="--d:1100"><i style="background:var(--gold);border-radius:2px"></i><p style="margin:0"><b>Rail to China</b><span>Tavan Tolgoi → Gashuunsukhait, 240 km</span></p></div>
+        <div class="sizekey a" style="--d:1300">Circle area = taxes &amp; fees the mine’s operator paid in 2025</div>
       </div>
     </div>
-    <div class="src">Mine positions approximate. Sources: Rio Tinto; Mining Weekly; Mongolian Mining Journal.</div>
+    <div class="src">Mine positions approximate. Circle size: 2025 taxes &amp; fees (Oyu Tolgoi ≈₮2.3T, Erdenet ₮2.2T, Erdenes Tavan Tolgoi ₮1.7T; see slide 18). Sources: Rio Tinto; Mining Weekly; Mongolian Mining Journal.</div>
   </section>
   <!-- GDP GROWTH -->
   <section class="slide" data-notes="This is the big picture, from official statistics. Since 2000 Mongolia's economy grew 22 times, from 1.1 to 25 billion dollars. Mining grew even faster, 52 times, from about 120 million to 6.4 billion dollars. So mining went from a tenth of the economy to a quarter. The jumps line up with mining: the 2011 Oyu Tolgoi construction and coal boom, when GDP grew 17%, and the 2023 coal export record.">
@@ -989,6 +1021,21 @@ h2 em{font-style:normal;color:var(--copper)}
     </div>
     <div class="src">Rio Tinto 2025 results (revenue); Oyu Tolgoi Q4 2025 results (in-country spend $2.4B, taxes); Mongolia Weekly (2026 agreement); ikon.mn (dividends from 2027). The 52% is revenue minus in-country spend.</div>
   </section>
+  <!-- GEOPOLITICS -->
+  <section class="slide" data-notes="Geography decides a lot. Mongolia has no coastline and only two neighbours, Russia and China. There is no road to the sea that doesn't cross one of them, and the nearest port, Tianjin, is in China, over 1,200 km from Ulaanbaatar. So coal and copper go by truck and rail into China, which buys over 90% of our exports. Russia takes about half a percent. The one product that escapes is gold, which is light enough to fly, mostly to Switzerland. The strategy is called the third neighbour policy: partners like Japan, South Korea, the US, the EU and France, plus more railways so we have more than one door.">
+    <div class="kicker a">Core 18 <b>· Part 4 · Geopolitics</b></div>
+    <h2 class="a" style="--d:100">Landlocked between <em>two giants</em></h2>
+    <p class="point a" style="--d:180"><span>The point</span>No coastline and only two neighbours, so heavy minerals can only leave by land: almost all of it goes into China. Only gold escapes, by plane.</p>
+    <div class="geowrap">
+      <div class="a" style="--d:200"><svg id="geo" viewBox="0 0 880 470" aria-label="Map of Mongolia between Russia and China with export routes"></svg></div>
+      <div class="geoside">
+        <div class="gcard a r" style="--d:600"><div class="gn">2 <em>neighbours</em> · 0 coast</div><p>Every road and railway out crosses <b>Russia or China</b>. The nearest seaport, Tianjin, is in China, <b>over 1,200 km</b> from Ulaanbaatar.</p></div>
+        <div class="gcard a r" style="--d:1500"><div class="gn"><em>90%+</em> to China</div><p>Russia buys about <b>0.5%</b>. Gold is the exception: light enough to fly, so <b>~5.6%</b> goes to Switzerland.</p></div>
+        <div class="gcard plan a r" style="--d:2400"><div class="gh">The plan: a "third neighbour"</div><p><b>Partners beyond the border</b> (Japan, Korea, the US, EU, France's $1.6B uranium deal) and <b>new rail crossings</b>, so exports get more than one door.</p></div>
+      </div>
+    </div>
+    <div class="src">Schematic map, not to scale. Export shares: Ukrinform citing Ukrainian foreign intelligence (Dec 2025); Reuters via The Financial Express (2026): coal exports 80+ Mt, almost all to China. Distance is straight-line. Third-neighbour policy: Mongolian foreign policy concept.</div>
+  </section>
   <!-- PLANS -->
   <section class="slide" data-notes="Mining has challenges, and each one already has a plan in motion. To depend less on one buyer, Mongolia is adding partners like France and South Korea. To ride out price swings, it is building plants to sell processed products. To protect land and water, companies are adopting international standards. And to attract explorers, tenders and data are opening up.">
     <div class="bgphoto" style="background-image:url(img/horses.jpg);--o:.18"></div>
@@ -1186,6 +1233,10 @@ map.appendChild(grid);
 map.appendChild(mk('path',{class:'land',d:'M'+outline.map(p=>pr(p).map(v=>v.toFixed(1)).join(',')).join('L')+'Z'}));
 const tt=pr([105.55,43.62]),gs=pr([106.3,42.45]);
 map.appendChild(mk('path',{class:'rail',pathLength:1,d:`M${tt}Q${(tt[0]+gs[0])/2+14},${(tt[1]+gs[1])/2} ${gs}`}));
+const sizes=[{p:[104.08,49.03],v:2.2,c:'#F4A86B',d:900,t:'₮2.2T'},{p:[105.55,43.62],v:1.7,c:'#AEB6BD',d:1150,t:'₮1.7T'},{p:[106.86,43.0],v:2.3,c:'#E07A3F',d:1400,t:'₮2.3T'}];
+sizes.forEach(z=>{const [x,y]=pr(z.p);const r=30*Math.sqrt(z.v/2.3);const g=mk('g',{class:'msize',style:`--d:${z.d}`});
+  const c=mk('g',{class:'core'});c.appendChild(mk('circle',{cx:x,cy:y,r,fill:z.c,'fill-opacity':.28,stroke:z.c,'stroke-width':1.2}));g.appendChild(c);map.appendChild(g);});
+{const [x,y]=pr([91.9,48.35]);const g=mk('g',{class:'msize',style:'--d:1650'});g.appendChild(mk('circle',{cx:x,cy:y,r:9,fill:'none',stroke:'#4F8BD6','stroke-width':1.2,'stroke-dasharray':'2 2'}));map.appendChild(g);}
 const pins=[
   {n:'Ulaanbaatar',p:[106.92,47.92],c:'#EEE8DF',r:3.2,dx:6,dy:-4},
   {n:'Erdenet',p:[104.08,49.03],c:'#F4A86B',r:4,dx:6,dy:-4},
@@ -1202,6 +1253,46 @@ pins.forEach((q,i)=>{
   g.appendChild(d);map.appendChild(g);
 });
 
+
+/* ---------- geopolitics map ---------- */
+(function(){const svg=document.getElementById('geo');if(!svg)return;
+const P=([lo,la])=>[(lo-62)*10,(58.5-la)*12.2];
+const poly=(pts,cls)=>{const e=mk('path',{class:cls,d:'M'+pts.map(p=>P(p).map(v=>v.toFixed(1)).join(',')).join('L')+'Z'});svg.appendChild(e);return e;};
+svg.appendChild(mk('rect',{x:0,y:0,width:880,height:470,class:'base'}));
+poly([[60,58.6],[60,55],[62,54],[69,55],[73,53.5],[77,53.5],[80,51],[83,51],[85.5,49.5],[87.8,49.2],[95,47],[110,47],[117,48],[120.5,50],[123,53.5],[126,52.8],[128,49.5],[131,47.8],[134.5,48.2],[133,45],[131,42.5],[132,43.3],[135.5,43.8],[138,46.5],[140.5,48.5],[141,52],[140,54],[137,54],[135.5,55],[141,58.6]],'ru');
+poly([[73.6,39.5],[79,45.2],[82.5,47],[85.5,48.4],[87.8,49.2],[95,45],[105,43],[115,45],[119.7,47.2],[120.5,50],[123,53.5],[126,52.8],[128,49.5],[131,47.8],[134.5,48.2],[133,45],[131,42.5],[129.5,42.4],[128,41.5],[124.3,40],[121.5,39],[121.5,40.8],[118,39.2],[119.5,37.5],[122.5,37],[120,35.5],[121.5,32],[122,30],[120,26],[117,23.5],[113,22.2],[110,21],[108,21.6],[106.5,22.5],[103,22.5],[100,21.5],[98,24],[97.5,28],[92,27.8],[88.8,27.9],[86,28],[81,30.5],[79,32.5],[78.5,35],[75,37]],'cn');
+poly([[124.3,40],[128,41.5],[129.5,42.4],[129.5,41],[128,39],[129.5,37.5],[129.3,35.2],[126.5,34.5],[126,37.5]],'nb');
+poly([[151,58.6],[151,19],[110,19],[110,21],[113,22.2],[117,23.5],[120,26],[122,30],[121.5,32],[120,35.5],[122.5,37],[119.5,37.5],[118,39.2],[121.5,40.8],[121.5,39],[124.3,40],[126,37.5],[126.5,34.5],[129.3,35.2],[129.5,37.5],[128,39],[129.5,41],[129.5,42.4],[131,42.5],[132,43.3],[135.5,43.8],[138,46.5],[140.5,48.5],[141,52],[140,54],[137,54],[135.5,55],[141,58.6]],'sea');
+poly([[130,31.2],[131.5,34],[135,34.4],[139.8,35.2],[141,37.5],[141.6,40.5],[140.2,41.4],[139.6,38.5],[137,37.1],[135,35.7],[132.2,35.3],[130.6,33.9]],'nb');
+poly([[140,41.6],[141.2,43.4],[141.9,45.4],[145.4,43.4],[143.2,42]],'nb');
+const mnP=outline.map(p=>P(p).map(v=>v.toFixed(1)).join(','));svg.appendChild(mk('path',{class:'mn',d:'M'+mnP.join('L')+'Z'}));
+const T=(txt,lp,cls,a)=>{const [x,y]=P(lp);const e=mk('text',Object.assign({x,y,class:cls},a||{}));e.textContent=txt;svg.appendChild(e);return e;};
+T('Russia',[95,55.5],'lbl big');T('China',[100,33],'lbl big');T('Mongolia',[96.5,46.4],'lbl mn');T('Kazakhstan',[66,47],'lbl');T('Pacific',[138,27],'lbl');T('Japan',[136.5,39],'lbl');T('Korea',[124,36.2],'lbl');
+// landlocked ring
+{const [x,y]=P([103,46.5]);svg.appendChild(mk('ellipse',{cx:x,cy:y,rx:150,ry:70,class:'ring'}));}
+const pts={gs:[106.3,42.4],tj:[117.2,39.1],ub:[106.9,47.9],sb:[106.2,50.3],vl:[131.9,43.1],jp:[135.3,34.6],kr:[129.0,35.1],sw:[60,46]};
+const rp=(k)=>P(pts[k]);
+const city=(k,n,dx,dy,anchor)=>{const [x,y]=rp(k);const g=mk('g',{class:'gfade',style:'--d:500'});g.appendChild(mk('circle',{cx:x,cy:y,r:4,fill:'#EEE8DF'}));const t=mk('text',{x:x+dx,y:y+dy,class:'city','text-anchor':anchor||'start'});t.textContent=n;g.appendChild(t);svg.appendChild(g);};
+city('ub','Ulaanbaatar',7,-6);city('tj','Tianjin port',-8,20,'end');city('vl','Vladivostok',7,-6);
+const route=(d,cls,delay,dots,dur,col,r)=>{const pth=mk('path',{d,class:`route ${cls} rv`,style:`--d:${delay}`});svg.appendChild(pth);const len=pth.getTotalLength?pth.getTotalLength():800;pth.style.setProperty('--len',len);
+  const g=mk('g',{class:'gfade',style:`--d:${delay+900}`});
+  for(let i=0;i<dots;i++){const c=mk('circle',{r,fill:col});const am=mk('animateMotion',{dur:dur+'s',repeatCount:'indefinite',begin:(-i*dur/dots).toFixed(2)+'s',path:d});c.appendChild(am);g.appendChild(c);}svg.appendChild(g);};
+const [gx,gy]=rp('gs'),[tx,ty]=rp('tj'),[ux,uy]=rp('ub'),[sx,sy]=rp('sb'),[vx,vy]=rp('vl'),[jx,jy]=rp('jp'),[kx,ky]=rp('kr');
+// 1 Mongolia -> China -> Tianjin (big)
+route(`M${ux},${uy} Q${gx-10},${gy-40} ${gx},${gy} T${tx},${ty}`,'r1',700,22,5,'#E07A3F',4.2);
+// 2 Tianjin -> world by sea
+route(`M${tx},${ty} Q${tx+60},${ty+20} ${kx-6},${ky+18} Q${jx-60},${jy+40} ${jx},${jy+8}`,'r2',1400,6,4.5,'#7FA7D9',3);
+route(`M${tx},${ty} Q${tx+70},${ty+120} ${tx+150},${ty+250} L880,${ty+300}`,'r2',1600,6,4.5,'#7FA7D9',3);
+// 3 Russia trickle
+route(`M${ux},${uy} L${sx},${sy} Q${sx+150},${sy-40} ${vx},${vy}`,'r3',2200,3,7,'#AEB6BD',2.4);
+// 4 gold by air to Switzerland
+route(`M${ux},${uy} Q${(ux)/2},${uy-210} 0,${uy-60}`,'r4',2900,3,4,'#E8B94A',3);
+const tag=(txt,x,y,col,d,anchor,sz)=>{const e=mk('text',{x,y,class:'tag gfade',fill:col,style:`--d:${d}`,'text-anchor':anchor||'start'});if(sz)e.style.fontSize=sz+'px';e.textContent=txt;svg.appendChild(e);};
+tag('90%+ → China',gx-215,gy+22,'#E07A3F',1200);
+tag('to the world by sea',tx+70,ty+92,'#7FA7D9',1900,'start',18);
+tag('Russia 0.5%',sx+40,sy-30,'#AEB6BD',2600,'start',20);
+tag('✈ gold → Switzerland 5.6%',20,40,'#E8B94A',3300,'start',19);
+})();
 /* ---------- train ---------- */
 const wag=document.getElementById('wag');
 let w='<rect x="660" y="96" width="92" height="48" rx="6" fill="#E8B94A"/><rect x="730" y="104" width="16" height="14" rx="2" fill="#2A3B4D"/><rect x="660" y="122" width="92" height="6" fill="#0E1114" opacity=".4"/>';
