@@ -673,9 +673,15 @@ h2 em{font-style:normal;color:var(--copper)}
 .fxp{display:flex;flex-direction:column;justify-content:center;gap:8px} .fxp span{font-size:16px;color:var(--mute)} .fxp b{color:var(--ink);font-size:20px}
 .pb{height:12px;border-radius:6px;background:#2A323A;overflow:hidden} .pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4E9A6C,#7FC79A);border-radius:6px;transition:width 1.6s cubic-bezier(.2,.7,.2,1) calc(var(--d,0)*1ms + 500ms)}
 .slide.active .pb i{width:var(--w)}
+.qpanel{padding:20px 22px 14px!important}
+.qq{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:11px 0;color:inherit;font:inherit;cursor:pointer}
+.qq i{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--display);font-weight:900;font-size:26px;background:var(--copper);color:#0E1114}
+.qq b{display:block;font-size:24px;color:var(--ink);font-weight:600} .qq small{display:block;font-size:15px;color:var(--mute);margin-top:2px}
+.qq:hover b{color:var(--copper2)}
+.kicker .kq i{font-style:normal;font-family:var(--display);font-weight:900;color:var(--copper);margin-right:8px}
 .thanks{margin:16px 0 0;font-size:30px;color:var(--mute)} .thanks strong{color:var(--copper);font-size:34px} .thanks span{font-family:var(--mono);font-size:20px;margin-left:10px}
 </style>
-  <section class="slide s-title active" data-notes="Open strong. This is the Mongolian Culture and Business Fair, so start with Mongolia: our biggest business is what lies under our steppe. Mining is over 90 percent of exports and about a quarter of the economy. Today, by 12C, we go from the surface down 1.3 km, then look at what it means for business.">
+  <section class="slide s-title active" data-notes="Open strong. This is the Mongolian Culture and Business Fair, so start with Mongolia: our biggest business is what lies under our steppe. Today, 12C answers four questions: what do we have, what is it worth, how do we find more, and how are we growing.">
     <canvas id="strata" width="1600" height="900"></canvas>
     <svg class="truck tA" id="truckA" viewBox="0 0 320 182" aria-hidden="true">
       <defs>
@@ -709,20 +715,10 @@ h2 em{font-style:normal;color:var(--copper)}
       <p class="sub a" style="--d:450">Mining — Mongolia's Resources and Opportunities</p>
       <div class="by a" style="--d:650"><span>by</span><b>12C</b></div>
     </div>
-    <div class="biz a l" style="--d:500">
-      <div class="bz-h">Mongolia's biggest business</div>
-      <div class="bz-r"><span class="bz-n"><span data-count="92">0</span>%</span><span>of exports are minerals</span></div>
-      <div class="bz-r"><span class="bz-n"><span data-count="25">0</span>%</span><span>of the economy (GDP)</span></div>
-      <div class="tags">
-        <span class="tag"><i style="background:var(--copper)"></i>Copper</span>
-        <span class="tag"><i style="background:#555c64;border:1px solid #9AA3A8"></i>Coal</span>
-        <span class="tag"><i style="background:var(--gold)"></i>Gold</span>
-        <span class="tag"><i style="background:var(--sky)"></i>Rare earths</span>
-      </div>
-    </div>
+    <div class="biz qpanel a l" style="--d:450"><div class="bz-h">Today: 4 questions</div><button class="qq a r" style="--d:600" data-go="p1" type="button"><i>1</i><span><b>What do we have?</b><small>Reserves, the big mines and why mining matters</small></span></button><button class="qq a r" style="--d:780" data-go="p2" type="button"><i>2</i><span><b>What is it worth?</b><small>Coal vs copper, and what sells</small></span></button><button class="qq a r" style="--d:960" data-go="p3" type="button"><i>3</i><span><b>How do we find more?</b><small>Record exploration spending</small></span></button><button class="qq a r" style="--d:1140" data-go="p4" type="button"><i>4</i><span><b>How are we growing?</b><small>Big companies, geopolitics, herders</small></span></button></div>
   </section>
-    <section class="slide" data-notes="Three numbers to remember: almost a third of the economy, nine out of ten export dollars, a third of the government's money. Mining kept growing in 2025.">
-    <div class="kicker a">Core 02 <b>· Part 1 · <span class="kq">What do we have?</span> · What we have</b></div>
+    <section data-key="p1" class="slide" data-notes="Three numbers to remember: almost a third of the economy, nine out of ten export dollars, a third of the government's money. Mining kept growing in 2025.">
+    <div class="kicker a">Core 02 <b>· Part 1 · <span class="kq"><i>Q1/4</i>What do we have?</span> · What we have</b></div>
     <h2 class="a" style="--d:100">Mining <em>is</em> Mongolia's economy</h2>
     <p class="point a" style="--d:180"><span>The point</span>Almost a third of GDP, 9 of every 10 export dollars and a third of state revenue come out of the ground.</p>
     <div class="stats">
@@ -734,7 +730,7 @@ h2 em{font-style:normal;color:var(--copper)}
     <div class="src">GDP/exports/revenue: 2023, East Asia Forum (2025). Growth: Ministry of Economy &amp; Development, Oct 2025.</div>
   </section>
     <section class="slide" data-notes="Point out how the giants sit in the South Gobi, right next to China. The gold line is the 240 km railway to the border at Gashuunsukhait.">
-    <div class="kicker a">Core 03 <b>· Part 1 · <span class="kq">What do we have?</span> · Where it is</b></div>
+    <div class="kicker a">Core 03 <b>· Part 1 · <span class="kq"><i>Q1/4</i>What do we have?</span> · Where it is</b></div>
     <h2 class="a" style="--d:100">The giants sit next to <em>China</em></h2>
     <p class="point a" style="--d:180"><span>The point</span>The two biggest mines, Oyu Tolgoi and Tavan Tolgoi, are in the South Gobi, a short haul from the border where almost all exports go.</p>
     <div class="mapwrap">
@@ -752,7 +748,7 @@ h2 em{font-style:normal;color:var(--copper)}
   </section>
     <section class="slide" data-notes="One message: Mongolia is resource-rich far beyond its size. Mongolia has about 3.5 million people, 0.04 percent of the world. Yet it holds about 10 percent of world fluorspar, 6 percent of copper, 3 to 4 percent of rare earths. Divide the share of resources by the share of population and you get how much more Mongolia has per person than the world average: about 240 times for fluorspar, 140 for copper, 85 for rare earths. Even coal, on the strict proven measure, is 17 times. Stars mean USGS does not list Mongolia, so I used the Ministry's number, treat it as indicative. Lithium is not shown because there is no comparable world figure yet.">
     <div class="bgphoto" style="background-image:url(img/ore.jpg);--o:.16"></div>
-    <div class="kicker a">Core 09 <b>· Part 1 · <span class="kq">What do we have?</span> · Mineral reserves</b></div>
+    <div class="kicker a">Core 09 <b>· Part 1 · <span class="kq"><i>Q1/4</i>What do we have?</span> · Mineral reserves</b></div>
     <h2 class="a" style="--d:100">Few people, <em>giant</em> resources</h2>
     <p class="point a" style="--d:180"><span>The point</span>Mongolia has 0.04% of the world's people but about 10% of its fluorspar, 6% of its copper and 3.6% of its rare earths. Per person, that is 85 to 240 times the world average.</p>
     <div class="rlwrap">
@@ -770,8 +766,8 @@ h2 em{font-style:normal;color:var(--copper)}
     </div>
     <div class="src">Multiple = Mongolia’s share of world reserves ÷ its share of world population (≈0.043%). Mongolia: Ministry guide (2026); *gold excl. Oyu Tolgoi; coal = proven reserves (BGR/BP), the Ministry’s wider 39.7 Bt would be ×88. World: USGS Mineral Commodity Summaries 2026 (fluorspar 34 Mt = USGS figure); Red Book (uranium). *Not in USGS’s table, so Ministry figures are used (indicative). Lithium has no comparable world figure.</div>
   </section>
-    <section class="slide" data-notes="Mining is over 90% of exports every year. Inside that, coal dominated during the boom of 2022 to 2024. Now copper from Oyu Tolgoi's underground mine has caught up, and in 2026 so far copper is bigger than coal. Nearly all of it goes to China.">
-    <div class="kicker a">Core 11 <b>· Part 2 · <span class="kq">What is it worth?</span> · Export mix</b></div>
+    <section data-key="p2" class="slide" data-notes="Mining is over 90% of exports every year. Inside that, coal dominated during the boom of 2022 to 2024. Now copper from Oyu Tolgoi's underground mine has caught up, and in 2026 so far copper is bigger than coal. Nearly all of it goes to China.">
+    <div class="kicker a">Core 11 <b>· Part 2 · <span class="kq"><i>Q2/4</i>What is it worth?</span> · Export mix</b></div>
     <h2 class="a" style="--d:100">Coal's boom, <em>copper's turn</em></h2>
     <p class="point a" style="--d:180"><span>The point</span>Coal carried exports in 2022–24. Now copper has overtaken it, so Oyu Tolgoi matters more than ever.</p>
     <div class="mixtrend">
@@ -787,8 +783,8 @@ h2 em{font-style:normal;color:var(--copper)}
     </div>
     <div class="src">Shares calculated from export values: USGS Minerals Yearbooks; AKIpress; bne IntelliNews; Ministry of Economy &amp; Development (Dec 2025); APIP; ArdNews. *2026 = Jan–Sep.</div>
   </section>
-    <section class="slide" data-notes="Before a mine, someone has to find it. Companies with exploration licences spent a record 467 billion tugrik searching for deposits in 2023, more than in the 2012 boom, and spending stayed high in 2024. The biggest cost is drilling. Interest keeps rising: tender applications for new exploration areas jumped from 173 in 2024 to 754 in 2025.">
-    <div class="kicker a">Core 13 <b>· Part 3 · <span class="kq">How do we find more?</span> · Exploration</b></div>
+    <section data-key="p3" class="slide" data-notes="Before a mine, someone has to find it. Companies with exploration licences spent a record 467 billion tugrik searching for deposits in 2023, more than in the 2012 boom, and spending stayed high in 2024. The biggest cost is drilling. Interest keeps rising: tender applications for new exploration areas jumped from 173 in 2024 to 754 in 2025.">
+    <div class="kicker a">Core 13 <b>· Part 3 · <span class="kq"><i>Q3/4</i>How do we find more?</span> · Exploration</b></div>
     <h2 class="a" style="--d:100">Record money spent <em>searching</em></h2>
     <p class="point a" style="--d:180"><span>The point</span>Licence holders spent a record ₮467 billion exploring for new deposits in 2023, more than at the peak of the 2012 boom.</p>
     <div class="exwrap">
@@ -805,8 +801,8 @@ h2 em{font-style:normal;color:var(--copper)}
     <div class="pipe5 a" style="--d:1400"><span>Survey</span><b>→</b><span>Explore &amp; drill</span><b>→</b><span>Register reserves</span><b>→</b><span>Mining licence</span><b>→</b><span>Mine</span><em>Oyu Tolgoi: found in 2001, producing in 2013</em></div>
     <div class="src">MRPAM interview (2019) for 2007–2017; Mongolian Mining Journal (2026) for 2021–24; MRPAM statistics (Nov 2025) for drilling, licences, tenders. Not adjusted for inflation; 2018–20 not published in these sources.</div>
   </section>
-    <section class="slide" data-notes="Same five facts for each of the three biggest miners. Together they paid about 6.2 trillion tugrik in taxes and fees in 2025. Oyu Tolgoi is a partnership with Rio Tinto, ETT is 73.5% state and 26.4% owned by 3.4 million citizens, and Erdenet is state-controlled.">
-    <div class="kicker a">Core 08 <b>· Part 4 · <span class="kq">How are we growing?</span> · Who runs the mines</b></div>
+    <section data-key="p4" class="slide" data-notes="Same five facts for each of the three biggest miners. Together they paid about 6.2 trillion tugrik in taxes and fees in 2025. Oyu Tolgoi is a partnership with Rio Tinto, ETT is 73.5% state and 26.4% owned by 3.4 million citizens, and Erdenet is state-controlled.">
+    <div class="kicker a">Core 08 <b>· Part 4 · <span class="kq"><i>Q4/4</i>How are we growing?</span> · Who runs the mines</b></div>
     <h2 class="a" style="--d:100">Three giants, <em>₮6.2 trillion</em> in taxes</h2>
     <p class="point a" style="--d:180"><span>The point</span>The three biggest miners paid about ₮6.2 trillion in taxes and fees in 2025. Mongolians own part of all three, and 3.4 million citizens hold ETT shares directly.</p>
     <div class="ctable a" style="--d:300">
@@ -843,7 +839,7 @@ h2 em{font-style:normal;color:var(--copper)}
     <div class="src">*Concentrate is processed ore, not pure copper. OT tax converted at ≈₮3,500/$. Sources: Oyu Tolgoi Q4 2025; Argus; Mongolian Mining Journal (ETT, Erdenet 2025); Ministry of Industry &amp; Mineral Resources investment guide (2026).</div>
   </section>
     <section class="slide" data-notes="Geography decides a lot. Mongolia has no coastline and only two neighbours, Russia and China. There is no road to the sea that doesn't cross one of them, and the nearest port, Tianjin, is in China, more than 1,300 km from Ulaanbaatar in a straight line. So coal and copper go by truck and rail into China, which buys over 90% of our exports. Russia takes about half a percent. The one product that escapes is gold, which is light enough to fly, mostly to Switzerland. The strategy is called the third neighbour policy: partners like Japan, South Korea, the US, the EU and France, plus more railways so we have more than one door.">
-    <div class="kicker a">Core 18 <b>· Part 4 · <span class="kq">How are we growing?</span> · Geopolitics</b></div>
+    <div class="kicker a">Core 18 <b>· Part 4 · <span class="kq"><i>Q4/4</i>How are we growing?</span> · Geopolitics</b></div>
     <h2 class="a" style="--d:100">Landlocked between <em>two giants</em></h2>
     <p class="point a" style="--d:180"><span>The point</span>No coastline and only two neighbours, so coal and copper can only leave by road and rail: 89.4% of exports go into China. Only gold escapes, by plane.</p>
     <div class="geowrap">
@@ -858,7 +854,7 @@ h2 em{font-style:normal;color:var(--copper)}
   </section>
   <section class="slide" data-notes="Be honest here, judges respect it. Mining changed nomadic life in three ways. Water: Oyu Tolgoi diverted the Undai River, the only local water that didn't freeze in winter, and the sacred Bor Ovoo spring ended up behind the fence. Pasture: herders were relocated in 2004, and of 250 compensated households in Khanbogd, fewer than half still herd. Dust: coal trucks on dirt roads killed livestock and covered pasture in dust. The fixes: a 2017 agreement with herders with 60 commitments, 1.2 million dollars for lost livelihoods, deep wells, and river repair. The mine now uses deep salty water and recycles most of it. And the Tavan Tolgoi to Gashuunsukhait railway opened in 2022 to take coal off the dirt roads. Progress is real but unfinished: only 12 of more than 75 recommended wells were built by 2024.">
     <div class="bgphoto" style="background-image:url(img/horses.jpg);--o:.2"></div>
-    <div class="kicker a">Core 09 <b>· Part 4 · <span class="kq">How are we growing?</span> · Culture</b></div>
+    <div class="kicker a">Core 09 <b>· Part 4 · <span class="kq"><i>Q4/4</i>How are we growing?</span> · Culture</b></div>
     <h2 class="a" style="--d:100">What mining did to <em>nomadic</em> life</h2>
     <p class="point a" style="--d:180"><span>The point</span>Mines took water, pasture and clean air from herders. Real fixes are under way, but they are not finished.</p>
     <div class="fx">
