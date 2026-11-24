@@ -2,7 +2,7 @@
 <title>Beneath the Steppe</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Lobster&display=swap">
 <style>
 /* Layout: fixed 1600x900 stage scaled to the screen; a borehole gauge on the left drills deeper as slides advance. */
 :root{
@@ -31,6 +31,21 @@ body.pre .slide.active .a{opacity:0;transition:none}
 
 .kicker{font-family:var(--mono);font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper2);display:flex;gap:18px;align-items:center}
 .kicker b{font-weight:500;color:var(--mute)}
+.slide.divider{justify-content:center}
+.divider .dv-num{position:absolute;right:90px;top:50%;transform:translateY(-52%);font-family:var(--display);font-weight:900;font-size:440px;line-height:.8;color:transparent;-webkit-text-stroke:2px rgba(224,122,63,.45);letter-spacing:-.02em;pointer-events:none}
+.divider .dv-body{position:relative;max-width:1000px}
+.divider .dv-part{font-family:var(--mono);font-size:22px;letter-spacing:.3em;text-transform:uppercase;color:var(--copper2);display:flex;align-items:center;gap:18px}
+.divider .dv-part::after{content:"";height:2px;width:0;background:var(--copper);transition:width 1.2s cubic-bezier(.2,.7,.2,1) .5s}
+.slide.active.divider .dv-part::after{width:260px}
+.divider .dv-qlabel{font-family:var(--mono);font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:34px}
+.divider h2.dv-q{font-size:118px;line-height:.95;margin:10px 0 0;max-width:1050px}
+.divider .dv-sub{font-size:28px;color:var(--mute);margin:26px 0 0;max-width:900px;line-height:1.35}
+.divider .dv-steps{display:flex;gap:10px;margin-top:56px;flex-wrap:wrap}
+.divider .dv-steps span{font-family:var(--mono);font-size:14px;letter-spacing:.06em;padding:9px 14px;border:1px solid var(--line);border-radius:999px;color:var(--mute);white-space:nowrap}
+.divider .dv-steps span.done{color:var(--ink);border-color:rgba(224,122,63,.4)}
+.divider .dv-steps span.on{background:var(--copper);border-color:var(--copper);color:#0E1114;font-weight:500}
+.kicker .kq{color:var(--ink);text-transform:none;letter-spacing:.02em;font-size:18px;border:1px solid rgba(224,122,63,.55);background:rgba(224,122,63,.12);border-radius:999px;padding:3px 12px}
+
 h2{font-family:var(--display);font-weight:800;font-size:84px;line-height:.95;margin:14px 0 0;letter-spacing:.005em;text-wrap:balance}
 h2 em{font-style:normal;color:var(--copper)}
 .lead{font-size:28px;color:var(--mute);max-width:1000px;margin:18px 0 0}
@@ -60,9 +75,14 @@ h2 em{font-style:normal;color:var(--copper)}
 #strata{position:absolute;inset:0;width:1600px;height:900px}
 .title-block{position:absolute;left:150px;top:44px;width:1000px}
 .title-block .eyebrow{display:flex;flex-direction:column;gap:6px}
+.fairlock{display:flex;align-items:center;gap:16px;flex-wrap:nowrap}
+.fairlock .fl{font-family:'Lobster','Brush Script MT',cursive;font-size:54px;line-height:1.05;white-space:nowrap;background:linear-gradient(180deg,#FFF3C4 0%,#F2C450 55%,#D49A2E 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #1B2A5A) drop-shadow(0 0 10px rgba(242,196,80,.25))}
+.fairlock .fl i{font-style:normal;color:transparent}
+.fairlock .rib{font-family:'Lobster','Brush Script MT',cursive;font-size:36px;color:#FFF6E0;background:linear-gradient(180deg,#9E1F24,#6E1216);padding:2px 22px 4px;border-radius:6px;transform:rotate(-4deg);box-shadow:0 4px 0 #3D0A0C,0 8px 18px rgba(0,0,0,.4);white-space:nowrap;position:relative;top:4px}
+.title-block .eyebrow .mn2{font-size:22px;font-weight:600;color:var(--mute);letter-spacing:.04em}
 .title-block .eyebrow b{font-family:var(--mono);font-weight:500;font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:var(--copper2)}
 .title-block .eyebrow .mn{font-size:32px;font-weight:600;color:var(--ink);letter-spacing:.01em}
-.title-block h1{font-family:var(--display);font-weight:900;font-size:142px;line-height:.86;margin:12px 0 0;letter-spacing:-.005em;text-transform:uppercase}
+.title-block h1{font-family:var(--display);font-weight:900;font-size:132px;line-height:.86;margin:12px 0 0;letter-spacing:-.005em;text-transform:uppercase}
 .title-block h1 span{display:block;white-space:nowrap}
 .title-block h1 span:last-child{color:transparent;-webkit-text-stroke:2px var(--copper);background:linear-gradient(90deg,var(--copper),var(--gold),var(--copper));-webkit-background-clip:text;background-clip:text;background-size:200% 100%;animation:sheen 6s linear infinite}
 @keyframes sheen{to{background-position:-200% 0}}
@@ -619,7 +639,42 @@ h2 em{font-style:normal;color:var(--copper)}
   <div id="depth">CORE 01</div>
   <div id="wipe"></div>
 
-  <!-- 1 TITLE -->
+<style>
+.cult{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.cu{border:1px solid var(--line);border-radius:14px;padding:22px 22px 20px;background:rgba(14,17,20,.72)}
+.cu .cn{font-family:var(--display);font-weight:900;font-size:68px;line-height:1;color:var(--copper)} .cu .cn.ic{color:var(--gold)}
+.cu b{display:block;font-size:22px;margin-top:10px;color:var(--ink)} .cu p{font-size:17px;color:var(--mute);line-height:1.4;margin:8px 0 0} .cu p b{display:inline;font-size:inherit}
+.cbar{margin-top:24px;border-left:4px solid var(--gold);padding:10px 18px;font-size:22px;color:var(--ink);background:rgba(232,185,74,.08)} .cbar b{color:var(--gold)}
+.reco{flex-wrap:nowrap!important;margin-top:14px!important} .reco b{font-size:19px!important;padding:6px 12px!important;white-space:nowrap}
+.concl .cr{padding-top:7px!important;padding-bottom:7px!important}
+.snouts{margin-top:22px;border:1px solid var(--line);border-radius:14px;padding:16px 22px 18px;background:rgba(14,17,20,.72)}
+.sn-h{font-size:19px;color:var(--mute);display:flex;align-items:baseline;gap:10px} .sn-h b{font-size:24px;color:var(--gold)}
+.sn-h span{margin-left:auto;font-family:var(--mono);font-size:15px;color:var(--mute)} .sn-h em{font-style:normal;font-family:var(--display);font-weight:900;font-size:34px;color:var(--copper);margin-right:2px}
+.sn-row{display:flex;align-items:stretch;gap:14px;margin-top:12px}
+.sn{flex:1;text-align:center;border-radius:12px;background:rgba(232,185,74,.06);border:1px solid rgba(232,185,74,.18);padding:10px 6px 10px;opacity:0;transform:translateY(24px) scale(.8);transition:opacity .5s ease,transform .7s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(400ms + var(--i)*140ms)}
+.slide.active .sn{opacity:1;transform:none}
+.sn i{display:block;font-style:normal;font-size:54px;line-height:1.1;animation:graze 3s ease-in-out infinite;animation-delay:calc(var(--i)*.4s)}
+@keyframes graze{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(-3deg)}}
+.sn b{display:block;font-size:22px;color:var(--ink);margin-top:4px} .sn span{font-family:var(--mono);font-size:13px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+.sn-move{flex:1.6;border-left:2px dashed var(--line);padding-left:18px;display:flex;flex-direction:column;justify-content:center}
+.sn-move b{font-family:var(--display);font-weight:900;font-size:56px;line-height:1;color:var(--copper)} .sn-move span{font-size:17px;color:var(--mute);line-height:1.3}
+.cult3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.cult3 .cu{padding:14px 18px} .cult3 .cu b{margin-top:4px;font-size:21px} .cult3 .cu p{font-size:16px;margin-top:6px}
+.cu .ck{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper2)}
+.cbar{margin-top:16px!important}
+.cult3 .cu p b{font-size:inherit!important;display:inline!important;margin:0!important;color:var(--ink)}
+.fx{display:grid;grid-template-columns:150px 1fr 40px 1fr 230px;column-gap:14px;row-gap:12px;margin-top:22px;align-items:stretch}
+.fxh{font-family:var(--mono);font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);padding-bottom:4px;border-bottom:1px solid var(--line)}
+.fxh.bad{color:#E57A6E} .fxh.good{color:#7FC79A}
+.fxi{display:flex;flex-direction:column;justify-content:center;font-size:44px;line-height:1} .fxi b{font-size:24px;margin-top:6px;color:var(--ink)}
+.fxc{border-radius:12px;padding:14px 18px;font-size:18px;line-height:1.4;color:var(--mute)} .fxc b{color:var(--ink)}
+.fxc.bad{background:rgba(229,122,110,.09);border-left:4px solid #E57A6E} .fxc.good{background:rgba(127,199,154,.09);border-left:4px solid #7FC79A}
+.fxa{display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--mute)}
+.fxp{display:flex;flex-direction:column;justify-content:center;gap:8px} .fxp span{font-size:16px;color:var(--mute)} .fxp b{color:var(--ink);font-size:20px}
+.pb{height:12px;border-radius:6px;background:#2A323A;overflow:hidden} .pb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4E9A6C,#7FC79A);border-radius:6px;transition:width 1.6s cubic-bezier(.2,.7,.2,1) calc(var(--d,0)*1ms + 500ms)}
+.slide.active .pb i{width:var(--w)}
+.thanks{margin:16px 0 0;font-size:30px;color:var(--mute)} .thanks strong{color:var(--copper);font-size:34px} .thanks span{font-family:var(--mono);font-size:20px;margin-left:10px}
+</style>
   <section class="slide s-title active" data-notes="Open strong. This is the Mongolian Culture and Business Fair, so start with Mongolia: our biggest business is what lies under our steppe. Mining is over 90 percent of exports and about a quarter of the economy. Today, by 12C, we go from the surface down 1.3 km, then look at what it means for business.">
     <canvas id="strata" width="1600" height="900"></canvas>
     <svg class="truck tA" id="truckA" viewBox="0 0 320 182" aria-hidden="true">
@@ -649,7 +704,7 @@ h2 em{font-style:normal;color:var(--copper)}
     <div class="strata-label" style="left:1310px;top:738px">Coking coal seam</div>
     <div class="strata-label" style="left:1310px;top:842px">Copper-gold ore · ~1.3 km</div>
     <div class="title-block">
-      <div class="eyebrow a"><b>Mongolian Culture &amp; Business Fair 2026</b><span class="mn">Монголын соёл · Монголын бизнес</span></div>
+      <div class="eyebrow a"><div class="fairlock"><span class="fl">Mongolian Culture &amp; Business</span><span class="rib">Fair 2026</span></div><span class="mn2">Монголын соёл · Монголын бизнес</span></div>
       <h1 class="a" style="--d:150"><span>Beneath</span><span>the Steppe</span></h1>
       <p class="sub a" style="--d:450">Mining — Mongolia's Resources and Opportunities</p>
       <div class="by a" style="--d:650"><span>by</span><b>12C</b></div>
@@ -666,37 +721,8 @@ h2 em{font-style:normal;color:var(--copper)}
       </div>
     </div>
   </section>
-  <!-- BLAST -->
-  <section class="slide s-blast" data-notes="Let the blast play (it runs in slow motion). Then: every tonne of copper or coal starts like this: drill, load explosives, blast, dig, haul. Press R or the button to replay.">
-    <div class="shaker"><video id="blastvid" src="img/blast.mp4" poster="img/blast-poster.jpg" muted playsinline preload="auto"></video></div>
-    <div class="shade"></div>
-    <div class="flash"></div>
-    <div class="ring"></div><div class="ring r2"></div>
-    <canvas id="debris" width="1600" height="900"></canvas>
-    <div class="countdown"><span style="--d:0">3</span><span style="--d:450">2</span><span style="--d:900">1</span><span style="--d:1400;color:var(--copper)">FIRE</span></div>
-    <button id="replay" type="button">↻ Replay blast</button>
-    <div class="blast-text">
-      <div class="kicker a" style="--d:2600">Core 02 <b>· Day one at the mine</b></div>
-      <h2 class="a" style="--d:2700">Every tonne starts with a <em>blast</em></h2>
-      <p class="lead a" style="--d:2950;color:var(--ink)">Explosives break the rock so excavators and haul trucks can move it. Open-pit mines like Erdenet and Tavan Tolgoi blast rock like this as part of daily work.</p>
-    </div>
-    <div class="credit">Video: open-pit mine blast, stock footage via Pexels (not in Mongolia) · slowed down</div>
-  </section>
-  <!-- AGENDA -->
-  <section class="slide" data-notes="We answer four questions. What do we have? What is it worth? How do we find more? And how is the industry growing? Our thesis: Mongolia's mining story is just getting started.">
-    <div class="kicker a">Core 03 <b>· Roadmap</b></div>
-    <h2 class="a" style="--d:100">Four questions about <em>Mongolian mining</em></h2>
-    <p class="point a" style="--d:180"><span>Our thesis</span>Mongolia's mining story is just getting started: more exploration, bigger projects, and more value made at home.</p>
-    <div class="agenda">
-      <button class="ag a" style="--d:350" data-go="p1" type="button"><i>1</i><b>What do we have?</b><span>Why mining matters, the big mines and our mineral reserves</span></button>
-      <button class="ag a" style="--d:500" data-go="p2" type="button"><i>2</i><b>What is it worth?</b><span>Coal prices, copper's rise and the stock market</span></button>
-      <button class="ag a" style="--d:650" data-go="p3" type="button"><i>3</i><b>How do we find more?</b><span>Exploration spending and mapping the country</span></button>
-      <button class="ag a" style="--d:800" data-go="p4" type="button"><i>4</i><b>How are we growing?</b><span>New projects, who runs the mines, where the money goes</span></button>
-    </div>
-  </section>
-  <!-- 2 WHY IT MATTERS -->
-  <section data-key="p1" class="slide" data-notes="Three numbers to remember: almost a third of the economy, nine out of ten export dollars, a third of the government's money. Mining kept growing in 2025.">
-    <div class="kicker a">Core 02 <b>· Part 1 · What we have</b></div>
+    <section class="slide" data-notes="Three numbers to remember: almost a third of the economy, nine out of ten export dollars, a third of the government's money. Mining kept growing in 2025.">
+    <div class="kicker a">Core 02 <b>· Part 1 · <span class="kq">What do we have?</span> · What we have</b></div>
     <h2 class="a" style="--d:100">Mining <em>is</em> Mongolia's economy</h2>
     <p class="point a" style="--d:180"><span>The point</span>Almost a third of GDP, 9 of every 10 export dollars and a third of state revenue come out of the ground.</p>
     <div class="stats">
@@ -707,9 +733,8 @@ h2 em{font-style:normal;color:var(--copper)}
     <div class="banner a" style="--d:900"><span class="num">+<span data-count="8.2" data-dec="1">0</span>%</span><span>Mining output growth in Q3 2025, year on year. The sector is still expanding.</span></div>
     <div class="src">GDP/exports/revenue: 2023, East Asia Forum (2025). Growth: Ministry of Economy &amp; Development, Oct 2025.</div>
   </section>
-  <!-- 3 MAP -->
-  <section class="slide" data-notes="Point out how the giants sit in the South Gobi, right next to China. The gold line is the 240 km railway to the border at Gashuunsukhait.">
-    <div class="kicker a">Core 03 <b>· Part 1 · Where it is</b></div>
+    <section class="slide" data-notes="Point out how the giants sit in the South Gobi, right next to China. The gold line is the 240 km railway to the border at Gashuunsukhait.">
+    <div class="kicker a">Core 03 <b>· Part 1 · <span class="kq">What do we have?</span> · Where it is</b></div>
     <h2 class="a" style="--d:100">The giants sit next to <em>China</em></h2>
     <p class="point a" style="--d:180"><span>The point</span>The two biggest mines, Oyu Tolgoi and Tavan Tolgoi, are in the South Gobi, a short haul from the border where almost all exports go.</p>
     <div class="mapwrap">
@@ -723,128 +748,11 @@ h2 em{font-style:normal;color:var(--copper)}
         <div class="sizekey a" style="--d:1300">Circle area = taxes &amp; fees the mine’s operator paid in 2025</div>
       </div>
     </div>
-    <div class="src">Mine positions approximate. Circle size: 2025 taxes &amp; fees (Oyu Tolgoi ≈₮2.3T, Erdenet ₮2.2T, Erdenes Tavan Tolgoi ₮1.7T; see slide 18). Sources: Rio Tinto; Mining Weekly; Mongolian Mining Journal.</div>
+    <div class="src">Mine positions approximate. Circle size: 2025 taxes &amp; fees (Oyu Tolgoi ≈₮2.3T, Erdenet ₮2.2T, Erdenes Tavan Tolgoi ₮1.7T; see slide 7). Sources: Rio Tinto; Mining Weekly; Mongolian Mining Journal.</div>
   </section>
-  <!-- GDP GROWTH -->
-  <section class="slide" data-notes="This is the big picture, from official statistics. Since 2000 Mongolia's economy grew 22 times, from 1.1 to 25 billion dollars. Mining grew even faster, 52 times, from about 120 million to 6.4 billion dollars. So mining went from a tenth of the economy to a quarter. The jumps line up with mining: the 2011 Oyu Tolgoi construction and coal boom, when GDP grew 17%, and the 2023 coal export record.">
-    <div class="kicker a">Core 06 <b>· Part 1 · Growth</b></div>
-    <h2 class="a" style="--d:100">Mining grew <em>with</em> the economy</h2>
-    <p class="point a" style="--d:180"><span>The point</span>Since 2000 Mongolia's GDP grew 22×, and mining grew 52×, rising from a tenth of the economy to a quarter.</p>
-    <div class="gdpwrap">
-      <div class="a" style="--d:250">
-        <div class="legendrow" style="margin-top:2px"><span><i style="background:rgba(79,139,214,.45);border-top:3px solid var(--sky)"></i>Total GDP (US$ billion)</span><span><i style="background:rgba(224,122,63,.6);border-top:3px solid var(--copper)"></i>Mining's part of GDP</span></div>
-        <svg id="gdpchart" viewBox="0 0 980 440" aria-label="Mongolia GDP and mining value added 2000-2025"><line x1="60" x2="900" y1="400.0" y2="400.0" class="gl"/><text x="50" y="404.0" text-anchor="end" class="ax">$0B</text><line x1="60" x2="900" y1="329.6" y2="329.6" class="gl"/><text x="50" y="333.6" text-anchor="end" class="ax">$5B</text><line x1="60" x2="900" y1="259.3" y2="259.3" class="gl"/><text x="50" y="263.3" text-anchor="end" class="ax">$10B</text><line x1="60" x2="900" y1="188.9" y2="188.9" class="gl"/><text x="50" y="192.9" text-anchor="end" class="ax">$15B</text><line x1="60" x2="900" y1="118.5" y2="118.5" class="gl"/><text x="50" y="122.5" text-anchor="end" class="ax">$20B</text><line x1="60" x2="900" y1="48.1" y2="48.1" class="gl"/><text x="50" y="52.1" text-anchor="end" class="ax">$25B</text><g class="gclip"><path d="M60.0,400 L60.0,384.0 L93.6,382.2 L127.2,380.3 L160.8,377.5 L194.4,372.0 L228.0,364.5 L261.6,351.9 L295.2,340.4 L328.8,320.9 L362.4,335.5 L396.0,298.8 L429.6,253.5 L463.2,227.2 L496.8,223.1 L530.4,228.0 L564.0,236.5 L597.6,243.2 L631.2,238.5 L664.8,214.5 L698.4,200.1 L732.0,212.6 L765.6,184.9 L799.2,159.0 L832.8,113.9 L866.4,65.1 L900.0,43.0 L900.0,400 Z" class="ga"/><polyline points="60.0,384.0 93.6,382.2 127.2,380.3 160.8,377.5 194.4,372.0 228.0,364.5 261.6,351.9 295.2,340.4 328.8,320.9 362.4,335.5 396.0,298.8 429.6,253.5 463.2,227.2 496.8,223.1 530.4,228.0 564.0,236.5 597.6,243.2 631.2,238.5 664.8,214.5 698.4,200.1 732.0,212.6 765.6,184.9 799.2,159.0 832.8,113.9 866.4,65.1 900.0,43.0" class="gl2"/><path d="M60.0,400 L60.0,398.3 L93.6,398.5 L127.2,398.2 L160.8,397.5 L194.4,395.3 L228.0,392.5 L261.6,386.3 L295.2,383.9 L328.8,384.0 L362.4,387.4 L396.0,378.2 L429.6,371.8 L463.2,371.6 L496.8,373.7 L530.4,371.7 L564.0,370.4 L597.6,368.4 L631.2,359.6 L664.8,352.4 L698.4,349.3 L732.0,356.4 L765.6,346.9 L799.2,344.5 L832.8,319.5 L866.4,308.7 L900.0,309.7 L900.0,400 Z" class="ma"/><polyline points="60.0,398.3 93.6,398.5 127.2,398.2 160.8,397.5 194.4,395.3 228.0,392.5 261.6,386.3 295.2,383.9 328.8,384.0 362.4,387.4 396.0,378.2 429.6,371.8 463.2,371.6 496.8,373.7 530.4,371.7 564.0,370.4 597.6,368.4 631.2,359.6 664.8,352.4 698.4,349.3 732.0,356.4 765.6,346.9 799.2,344.5 832.8,319.5 866.4,308.7 900.0,309.7" class="ml"/></g><text x="60.0" y="424" text-anchor="middle" class="yr">2000</text><text x="228.0" y="424" text-anchor="middle" class="yr">2005</text><text x="396.0" y="424" text-anchor="middle" class="yr">2010</text><text x="564.0" y="424" text-anchor="middle" class="yr">2015</text><text x="732.0" y="424" text-anchor="middle" class="yr">2020</text><text x="900.0" y="424" text-anchor="middle" class="yr">2025*</text><g class="gnote" style="--d:2200"><line x1="429.6" x2="429.6" y1="245.5" y2="183.5" class="gln"/><text x="429.6" y="161.5" text-anchor="middle" class="gt">2011: GDP +17.3%</text><text x="429.6" y="177.5" text-anchor="middle" class="gs">Oyu Tolgoi build + coal boom</text></g>
-<g class="gnote" style="--d:2500"><line x1="832.8" x2="832.8" y1="311.5" y2="271.5" class="gln"/><text x="826.8" y="251.5" text-anchor="end" class="gt">2023: mining +23.4%</text><text x="826.8" y="267.5" text-anchor="end" class="gs">record coal exports</text></g>
-<g class="gnote" style="--d:2800"><text x="910.0" y="48.0" class="gend">$25.4B</text><text x="910.0" y="65.0" class="gs">GDP</text><text x="910.0" y="314.7" class="gend cu">$6.4B</text><text x="910.0" y="331.7" class="gs">mining</text></g></svg>
-      </div>
-      <div class="ttlside">
-        <div class="node a r" style="--d:700"><div class="num" style="color:var(--sky)">×22</div><p>GDP growth: $1.1B in 2000 → $25.4B in 2025</p></div>
-        <div class="node a r" style="--d:900"><div class="num" style="color:var(--copper)">×52</div><p>mining growth: $0.12B → $6.4B over the same years</p></div>
-        <div class="node a r" style="--d:1100"><div class="num" style="color:var(--gold)">11% → 25%</div><p>mining's share of GDP, 2000 → 2025</p></div>
-      </div>
-    </div>
-    <div class="src">National Statistics Office of Mongolia (1212.mn), GDP by production approach, current prices, US$ (table DT_NSO_0500_001V1). *2025 is preliminary. Growth rates are real (inflation-adjusted).</div>
-  </section>
-  <!-- GALLERY -->
-  <section class="slide" data-notes="Quick tour of the real sites. Erdenet in the north, Tavan Tolgoi and Oyu Tolgoi in the South Gobi.">
-    <div class="kicker a">Core 05 <b>· Part 1 · On the ground</b></div>
-    <h2 class="a" style="--d:100">Mining here is <em>industrial scale</em></h2>
-    <p class="point a" style="--d:180"><span>The point</span>Giant open pits, shafts over a kilometre deep, and convoys of trucks and trains to the border.</p>
-    <div class="gal">
-      <figure class="ph big" style="--d:250"><div class="im" style="background-image:url(img/erdenet-pit2.jpg)"></div><span class="tagc">Copper · Orkhon</span><figcaption><b>Erdenet open pit</b><span>Benches and haul roads spiral down into the copper-molybdenum orebody.</span></figcaption></figure>
-      <figure class="ph wide" style="--d:450"><div class="im" style="background-image:url(img/tt-pit.jpg)"></div><span class="tagc">Coking coal · South Gobi</span><figcaption><b>Tavan Tolgoi</b><span>Excavators and haul trucks working the coal benches.</span></figcaption></figure>
-      <figure class="ph" style="--d:650"><div class="im" style="background-image:url(img/ot-headframe.jpg)"></div><span class="tagc">Copper · South Gobi</span><figcaption><b>Oyu Tolgoi</b><span>Shaft headframe above the underground mine.</span></figcaption></figure>
-      <figure class="ph" style="--d:850"><div class="im" style="background-image:url(img/coal-truck.jpg)"></div><span class="tagc">Logistics</span><figcaption><b>Coal convoy</b><span>Trucks like this hauled coal to the border before the railway.</span></figcaption></figure>
-    </div>
-    <div class="src">Photos: Brücke-Osteuropa, public domain, Wikimedia Commons.</div>
-  </section>
-  <!-- 4 COPPER -->
-  <section class="slide" data-notes="Oyu Tolgoi is the biggest project in Mongolian history. The best ore is deep underground, mined by block caving: blast under the ore and let gravity break it. Output jumped 61% in 2025.">
-    <div class="bgphoto" style="background-image:url(img/ot-shaft.jpg);--o:.22"></div>
-    <div class="kicker a">Core 04 <b>· Part 1 · Copper</b></div>
-    <h2 class="a" style="--d:100">Copper is the <em>rising star</em></h2>
-    <p class="point a" style="--d:180"><span>The point</span>Oyu Tolgoi mines 1.3 km underground. Its copper output jumped 61% in 2025 and is heading for about 500,000 t a year.</p>
-    <div class="two">
-      <svg id="xsec" viewBox="0 0 640 600" class="a l" style="--d:250" aria-label="Cross-section of Oyu Tolgoi">
-        <defs>
-          <linearGradient id="rock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b4632"/><stop offset=".25" stop-color="#3a3330"/><stop offset=".6" stop-color="#262a2f"/><stop offset="1" stop-color="#17191c"/></linearGradient>
-          <radialGradient id="orebody" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F4A86B" stop-opacity=".85"/><stop offset=".6" stop-color="#E07A3F" stop-opacity=".45"/><stop offset="1" stop-color="#E07A3F" stop-opacity="0"/></radialGradient>
-        </defs>
-        <rect x="0" y="80" width="600" height="520" fill="url(#rock)"/>
-        <path d="M40 80 L70 80 L80 105 L110 105 L120 135 L150 135 L160 170 L220 170 L230 135 L255 135 L265 105 L290 105 L300 80" fill="#0E1114" stroke="#9AA3A8" stroke-width="1.2"/>
-        <text x="95" y="68">Open pit (2011)</text>
-        <g><rect x="320" y="44" width="70" height="36" fill="#2A2F35" stroke="#9AA3A8"/><rect x="332" y="22" width="8" height="22" fill="#2A2F35" stroke="#9AA3A8"/><rect x="350" y="28" width="8" height="16" fill="#2A2F35" stroke="#9AA3A8"/><text x="300" y="16">Concentrator (2013)</text></g>
-        <path d="M425 80 L440 30 L455 80" fill="none" stroke="#E8B94A" stroke-width="2.5"/>
-        <rect x="434" y="80" width="12" height="440" fill="#0E1114" stroke="#E8B94A" stroke-width="1"/>
-        <rect class="skip" x="436" y="496" width="8" height="18" fill="#E07A3F"/>
-        <text x="462" y="160">Shaft</text>
-        <path d="M300 520 L590 520" stroke="#E8B94A" stroke-width="2" stroke-dasharray="6 5"/>
-        <ellipse cx="445" cy="470" rx="160" ry="70" fill="url(#orebody)"/>
-        <g fill="#F4A86B">
-          <circle class="ore" style="--d:0" cx="380" cy="470" r="4"/><circle class="ore" style="--d:300" cx="410" cy="455" r="3"/>
-          <circle class="ore" style="--d:700" cx="470" cy="465" r="4"/><circle class="ore" style="--d:1100" cx="505" cy="450" r="3"/>
-          <circle class="ore" style="--d:500" cx="535" cy="470" r="4"/><circle class="ore" style="--d:1500" cx="355" cy="460" r="3"/>
-          <circle class="ore" style="--d:900" cx="445" cy="445" r="3"/>
-        </g>
-        <text x="300" y="560">Hugo North block cave</text>
-        <text x="300" y="580" class="dim">gravity breaks the ore from below</text>
-        <g class="dim"><path d="M612 80V520" stroke="#9AA3A8"/>
-          <path d="M606 80h12M606 249h12M606 418h12M606 520h12" stroke="#9AA3A8"/></g>
-        <text x="560" y="76" class="dim">0 m</text><text x="552" y="245" class="dim">500 m</text><text x="540" y="414" class="dim">1,000 m</text><text x="598" y="540" class="dim" text-anchor="end">1,300 m</text>
-        <text x="8" y="596" class="dim">depth to scale</text>
-      </svg>
-      <div class="facts">
-        <div class="fact a r" style="--d:400"><div class="num"><span data-count="345000">0</span><small>t</small></div><p><strong>copper produced in 2025</strong>, up 61% in one year</p>
-          <div class="track"><span style="--w:69%"></span><em>target ~500,000 t/yr, 2028–2036</em></div></div>
-        <div class="fact a r" style="--d:600"><p style="margin-top:26px"><strong>6 million+ electric cars a year</strong> could be built with its copper at full production. Expected to be the world's 4th-largest copper mine by 2030.</p></div>
-        <div class="fact a r" style="--d:800"><p><strong>Who owns it</strong></p>
-          <div class="split"><div style="width:66%;background:#3A4048">Rio Tinto 66%</div><div style="width:34%;background:var(--copper);color:#0E1114">Mongolia 34%</div></div></div>
-      </div>
-    </div>
-    <div class="src">Rio Tinto; Argus Media (Jan 2026); E&amp;MJ.</div>
-    <div class="credit">Photo: Kelapstick, CC BY-SA 3.0</div>
-  </section>
-  <!-- 5 COAL -->
-  <section class="slide" data-notes="Coal is the other giant. The railway opened in 2022 and exports nearly tripled since. Trains replace long truck convoys to the border.">
-    <div class="bgphoto" style="background-image:url(img/tt-benches.jpg);--o:.2"></div>
-    <div class="kicker a">Core 05 <b>· Part 1 · Coal</b></div>
-    <h2 class="a" style="--d:100">The railway <em>tripled</em> coal exports</h2>
-    <p class="point a" style="--d:180"><span>The point</span>After the 240 km line from Tavan Tolgoi to the border opened in 2022, exports rose from 31 Mt to a record 90 Mt in 2025.</p>
-    <div class="trainstrip a" style="--d:250">
-      <svg id="rail" viewBox="0 0 1340 190" preserveAspectRatio="none">
-        <defs><pattern id="sleep" width="22" height="14" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="8" height="14" fill="#3A3F45"/></pattern></defs>
-        <rect x="0" y="146" width="1340" height="14" fill="url(#sleep)"/>
-        <path d="M0 148H1340M0 158H1340" stroke="#9AA3A8" stroke-width="2"/>
-        <g class="train">
-          <g id="wag"></g>
-        </g>
-        <circle cx="16" cy="178" r="6" fill="#9AA3A8"/><text x="30" y="184">Tavan Tolgoi</text>
-        <circle cx="1324" cy="178" r="6" fill="var(--gold)"/><text x="1310" y="184" text-anchor="end">Gashuunsukhait · China border</text>
-        <text x="670" y="184" text-anchor="middle" fill="#E8B94A">240 km · about 4 hours</text>
-      </svg>
-    </div>
-    <div class="coalrow">
-      <div class="a" style="--d:400">
-        <div class="mono" style="font-size:17px;color:var(--mute);margin-bottom:10px">COAL EXPORTS, MILLION TONNES</div>
-        <div class="bars">
-          <div class="bar" style="--d:0"><div class="v">31</div><div class="col" style="--h:31%"></div></div>
-          <div class="bar" style="--d:150"><div class="v">70</div><div class="col" style="--h:70%"></div></div>
-          <div class="bar" style="--d:300"><div class="v">84</div><div class="col" style="--h:84%"></div></div>
-          <div class="bar" style="--d:450"><div class="v">90</div><div class="col" style="--h:90%"></div></div>
-        </div>
-        <div class="yrs"><span>2022</span><span>2023</span><span>2024</span><span>2025 · record</span></div>
-      </div>
-      <div class="side">
-        <div class="a r" style="--d:600"><div class="num"><span data-count="28.7" data-dec="1">0</span> Mt</div><p>exported by state-owned Erdenes Tavan Tolgoi in 2025, about 30% of the national total</p></div>
-        <div class="a r" style="--d:800"><div class="num">₮<span data-count="1.7" data-dec="1">0</span>T</div><p>in taxes and fees paid by the company in 2025</p></div>
-      </div>
-    </div>
-    <div class="src">Mining Weekly (Feb 2025); Mysteel (Jan 2026); Mongolian Mining Journal; SCMP.</div>
-  </section>
-  <!-- MINERAL BANK -->
-  <section class="slide" data-notes="One message: Mongolia is resource-rich far beyond its size. Mongolia has about 3.5 million people, 0.04 percent of the world. Yet it holds about 10 percent of world fluorspar, 6 percent of copper, 3 to 4 percent of rare earths. Divide the share of resources by the share of population and you get how much more Mongolia has per person than the world average: about 240 times for fluorspar, 140 for copper, 85 for rare earths. Even coal, on the strict proven measure, is 17 times. Stars mean USGS does not list Mongolia, so I used the Ministry's number, treat it as indicative. Lithium is not shown because there is no comparable world figure yet.">
+    <section class="slide" data-notes="One message: Mongolia is resource-rich far beyond its size. Mongolia has about 3.5 million people, 0.04 percent of the world. Yet it holds about 10 percent of world fluorspar, 6 percent of copper, 3 to 4 percent of rare earths. Divide the share of resources by the share of population and you get how much more Mongolia has per person than the world average: about 240 times for fluorspar, 140 for copper, 85 for rare earths. Even coal, on the strict proven measure, is 17 times. Stars mean USGS does not list Mongolia, so I used the Ministry's number, treat it as indicative. Lithium is not shown because there is no comparable world figure yet.">
     <div class="bgphoto" style="background-image:url(img/ore.jpg);--o:.16"></div>
-    <div class="kicker a">Core 09 <b>· Part 1 · Mineral reserves</b></div>
+    <div class="kicker a">Core 09 <b>· Part 1 · <span class="kq">What do we have?</span> · Mineral reserves</b></div>
     <h2 class="a" style="--d:100">Few people, <em>giant</em> resources</h2>
     <p class="point a" style="--d:180"><span>The point</span>Mongolia has 0.04% of the world's people but about 10% of its fluorspar, 6% of its copper and 3.6% of its rare earths. Per person, that is 85 to 240 times the world average.</p>
     <div class="rlwrap">
@@ -862,19 +770,8 @@ h2 em{font-style:normal;color:var(--copper)}
     </div>
     <div class="src">Multiple = Mongolia’s share of world reserves ÷ its share of world population (≈0.043%). Mongolia: Ministry guide (2026); *gold excl. Oyu Tolgoi; coal = proven reserves (BGR/BP), the Ministry’s wider 39.7 Bt would be ×88. World: USGS Mineral Commodity Summaries 2026 (fluorspar 34 Mt = USGS figure); Red Book (uranium). *Not in USGS’s table, so Ministry figures are used (indicative). Lithium has no comparable world figure.</div>
   </section>
-  <!-- 6 COAL BY YEAR -->
-  <section data-key="p2" class="slide" data-notes="Bars are how much coal we shipped, the gold line is how much money it earned. 2025 shipped the most coal ever but earned a third less than 2023, because the price per tonne fell from about $205 in 2022 to $64.">
-    <div class="kicker a">Core 10 <b>· Part 2 · Coal prices</b></div>
-    <h2 class="a" style="--d:100">Record volume, <em>falling value</em></h2>
-    <p class="point a" style="--d:180"><span>The point</span>Mongolia doesn't set the coal price. Tonnes rose every year since 2021, but the price per tonne fell by two-thirds from 2022 to 2025.</p>
-    <div class="legendrow a" style="--d:200"><span><i style="background:#4A525B;border-top:3px solid var(--gold)"></i>Coal exported (million tonnes)</span><span><i style="background:var(--gold);height:4px;border-radius:2px"></i>Money earned (US$ billion)</span><span class="mono" style="color:var(--mute)">price = earned ÷ tonnes</span></div>
-    <div class="a" style="--d:250"><svg id="coalchart" viewBox="0 0 1340 470" aria-label="Coal export volume and value by year"><line x1="90" x2="1250" y1="400.0" y2="400.0" class="gl"/><text x="78" y="405.0" text-anchor="end" class="ax">0</text><text x="1262" y="405.0" class="ax gd">$0B</text><line x1="90" x2="1250" y1="310.0" y2="310.0" class="gl"/><text x="78" y="315.0" text-anchor="end" class="ax">25</text><text x="1262" y="315.0" class="ax gd">$2.5B</text><line x1="90" x2="1250" y1="220.0" y2="220.0" class="gl"/><text x="78" y="225.0" text-anchor="end" class="ax">50</text><text x="1262" y="225.0" class="ax gd">$5B</text><line x1="90" x2="1250" y1="130.0" y2="130.0" class="gl"/><text x="78" y="135.0" text-anchor="end" class="ax">75</text><text x="1262" y="135.0" class="ax gd">$7.5B</text><line x1="90" x2="1250" y1="40.0" y2="40.0" class="gl"/><text x="78" y="45.0" text-anchor="end" class="ax">100</text><text x="1262" y="45.0" class="ax gd">$10B</text><rect class="cbar" style="--d:300" x="138.7" y="296.7" width="96" height="103.3" rx="3"/><text class="cvol" style="--d:900" x="186.7" y="372.0" text-anchor="middle">28.7</text><text class="yr" x="186.7" y="430" text-anchor="middle">2020</text><text class="ppt" x="186.7" y="456" text-anchor="middle">$74/t</text><rect class="cbar" style="--d:420" x="332.0" y="342.0" width="96" height="58.0" rx="3"/><text class="cvol" style="--d:1020" x="380.0" y="372.0" text-anchor="middle">16.1</text><text class="yr" x="380.0" y="430" text-anchor="middle">2021</text><text class="ppt" x="380.0" y="456" text-anchor="middle">$173/t</text><rect class="cbar" style="--d:540" x="525.3" y="285.9" width="96" height="114.1" rx="3"/><text class="cvol" style="--d:1140" x="573.3" y="372.0" text-anchor="middle">31.7</text><text class="yr" x="573.3" y="430" text-anchor="middle">2022</text><text class="ppt" x="573.3" y="456" text-anchor="middle">$205/t</text><rect class="cbar" style="--d:660" x="718.7" y="148.0" width="96" height="252.0" rx="3"/><text class="cvol" style="--d:1260" x="766.7" y="372.0" text-anchor="middle">70*</text><text class="yr" x="766.7" y="430" text-anchor="middle">2023</text><text class="ppt" x="766.7" y="456" text-anchor="middle">$126/t</text><rect class="cbar" style="--d:780" x="912.0" y="98.3" width="96" height="301.7" rx="3"/><text class="cvol" style="--d:1380" x="960.0" y="372.0" text-anchor="middle">83.8</text><text class="yr" x="960.0" y="430" text-anchor="middle">2024</text><text class="ppt" x="960.0" y="456" text-anchor="middle">$104/t</text><rect class="cbar last" style="--d:900" x="1105.3" y="76.0" width="96" height="324.0" rx="3"/><text class="cvol" style="--d:1500" x="1153.3" y="372.0" text-anchor="middle">90</text><text class="yr" x="1153.3" y="430" text-anchor="middle">2025</text><text class="ppt" x="1153.3" y="456" text-anchor="middle">$64/t</text><polyline class="vline" pathLength="1" points="186.7,323.3 380.0,299.9 573.3,166.0 766.7,83.2 960.0,86.8 1153.3,192.3"/><g class="vdot" style="--d:1700"><circle cx="186.7" cy="323.3" r="8"/><text x="186.7" y="305.3" text-anchor="middle">$2.13B</text></g><g class="vdot" style="--d:1820"><circle cx="380.0" cy="299.9" r="8"/><text x="380.0" y="281.9" text-anchor="middle">$2.78B</text></g><g class="vdot" style="--d:1940"><circle cx="573.3" cy="166.0" r="8"/><text x="573.3" y="148.0" text-anchor="middle">$6.5B</text></g><g class="vdot" style="--d:2060"><circle cx="766.7" cy="83.2" r="8"/><text x="766.7" y="65.2" text-anchor="middle">$8.8B</text></g><g class="vdot" style="--d:2180"><circle cx="960.0" cy="86.8" r="8"/><text x="960.0" y="68.8" text-anchor="middle">$8.7B</text></g><g class="vdot" style="--d:2300"><circle cx="1153.3" cy="192.3" r="8"/><text x="1153.3" y="174.3" text-anchor="middle">$5.77B</text></g><text x="78" y="22" text-anchor="end" class="ax">Mt</text><text x="1262" y="22" class="ax gd">value</text><text x="78" y="456" text-anchor="end" class="ax">price</text></svg></div>
-    <p class="takeaway a" style="--d:2300;margin-top:2px;font-size:26px">2025: the <strong>most coal ever (90 Mt)</strong>, but <strong>34% less money than 2023</strong>.</p>
-    <div class="src">AKIpress (2020–21); USGS &amp; bne IntelliNews (2022–23); Mysteel / Customs (2024–25). *2023 volume ≈70 Mt (sources vary 66.7–70). Price per tonne is calculated.</div>
-  </section>
-  <!-- 7 EXPORT MIX TREND -->
-  <section class="slide" data-notes="Mining is over 90% of exports every year. Inside that, coal dominated during the boom of 2022 to 2024. Now copper from Oyu Tolgoi's underground mine has caught up, and in 2026 so far copper is bigger than coal. Nearly all of it goes to China.">
-    <div class="kicker a">Core 11 <b>· Part 2 · Export mix</b></div>
+    <section class="slide" data-notes="Mining is over 90% of exports every year. Inside that, coal dominated during the boom of 2022 to 2024. Now copper from Oyu Tolgoi's underground mine has caught up, and in 2026 so far copper is bigger than coal. Nearly all of it goes to China.">
+    <div class="kicker a">Core 11 <b>· Part 2 · <span class="kq">What is it worth?</span> · Export mix</b></div>
     <h2 class="a" style="--d:100">Coal's boom, <em>copper's turn</em></h2>
     <p class="point a" style="--d:180"><span>The point</span>Coal carried exports in 2022–24. Now copper has overtaken it, so Oyu Tolgoi matters more than ever.</p>
     <div class="mixtrend">
@@ -890,30 +787,8 @@ h2 em{font-style:normal;color:var(--copper)}
     </div>
     <div class="src">Shares calculated from export values: USGS Minerals Yearbooks; AKIpress; bne IntelliNews; Ministry of Economy &amp; Development (Dec 2025); APIP; ArdNews. *2026 = Jan–Sep.</div>
   </section>
-  <!-- TTL STOCK -->
-  <section class="slide" data-notes="Ordinary Mongolians can own mining directly through the stock exchange. TTL is Tavan Tolgoi JSC, a separate company from the state giant ETT. Its price rides the coal cycle: it peaked in the 2011 boom, collapsed by 2016 when coal prices crashed, and has climbed again with record exports. That's the opportunity and the risk.">
-    <div class="kicker a">Core 12 <b>· Part 2 · The stock market</b></div>
-    <h2 class="a" style="--d:100">Mining you can <em>own</em>: TTL</h2>
-    <p class="point a" style="--d:180"><span>The point</span>Tavan Tolgoi JSC’s share price rides the coal cycle: a peak in the 2011 boom, a crash by 2016, and a new climb with record exports since 2023.</p>
-    <div class="ttlwrap">
-      <div class="a" style="--d:250">
-        <div class="legendrow" style="margin-top:4px"><span><i style="background:var(--up);height:4px;border-radius:2px"></i>TTL share price, ₮ (yearly, approximate)</span></div>
-        <svg id="ttlchart" viewBox="0 0 940 450" aria-label="TTL share price by year"><defs><linearGradient id="tgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FC49A" stop-opacity=".35"/><stop offset="1" stop-color="#7FC49A" stop-opacity="0"/></linearGradient></defs><line x1="70" x2="900" y1="420.0" y2="420.0" class="gl"/><text x="60" y="424.0" text-anchor="end" class="ax">0k</text><line x1="70" x2="900" y1="329.1" y2="329.1" class="gl"/><text x="60" y="333.1" text-anchor="end" class="ax">25k</text><line x1="70" x2="900" y1="238.2" y2="238.2" class="gl"/><text x="60" y="242.2" text-anchor="end" class="ax">50k</text><line x1="70" x2="900" y1="147.3" y2="147.3" class="gl"/><text x="60" y="151.3" text-anchor="end" class="ax">75k</text><line x1="70" x2="900" y1="56.4" y2="56.4" class="gl"/><text x="60" y="60.4" text-anchor="end" class="ax">100k</text><rect class="band " x="50.0" y="20" width="91.9" height="400"/><text class="bandl " x="58.0" y="410">COAL BOOM</text><rect class="band bad" x="309.4" y="20" width="91.9" height="400"/><text class="bandl bad" x="317.4" y="410">COAL SLUMP</text><rect class="band " x="724.4" y="20" width="195.6" height="400"/><text class="bandl " x="732.4" y="410">EXPORT RECORDS</text><path class="tarea" d="M70.0,420 L70.0,292.7 L121.9,92.7 L173.8,385.5 L225.6,398.2 L277.5,401.8 L329.4,409.1 L381.2,409.8 L433.1,387.3 L485.0,392.7 L536.9,396.4 L588.8,394.5 L640.6,392.7 L692.5,389.1 L744.4,354.5 L796.2,296.4 L848.1,303.6 L900.0,209.1 L900.0,420 Z"/><polyline class="tline" pathLength="1" points="70.0,292.7 121.9,92.7 173.8,385.5 225.6,398.2 277.5,401.8 329.4,409.1 381.2,409.8 433.1,387.3 485.0,392.7 536.9,396.4 588.8,394.5 640.6,392.7 692.5,389.1 744.4,354.5 796.2,296.4 848.1,303.6 900.0,209.1"/><text x="70.0" y="444" text-anchor="middle" class="yr">2010</text><text x="173.8" y="444" text-anchor="middle" class="yr">2012</text><text x="277.5" y="444" text-anchor="middle" class="yr">2014</text><text x="381.2" y="444" text-anchor="middle" class="yr">2016</text><text x="485.0" y="444" text-anchor="middle" class="yr">2018</text><text x="588.8" y="444" text-anchor="middle" class="yr">2020</text><text x="692.5" y="444" text-anchor="middle" class="yr">2022</text><text x="796.2" y="444" text-anchor="middle" class="yr">2024</text><text x="900.0" y="444" text-anchor="middle" class="yr">2026</text><g class="tnote" style="--d:1400"><circle cx="121.9" cy="27.3" r="5" fill="none" stroke="#7FC49A" stroke-width="2"/><line x1="121.9" x2="121.9" y1="27.3" y2="92.7" stroke="#7FC49A" stroke-dasharray="3 3"/><text x="135.9" y="41.8">₮108,000</text><text class="s" x="135.9" y="59.8">2011 peak (high)</text></g>
-<g class="tnote" style="--d:2000"><text x="381.2" y="379.8" text-anchor="middle">~₮2,800</text><text class="s" x="381.2" y="397.8" text-anchor="middle">2016 low</text></g>
-<g class="tnote" style="--d:2700"><circle cx="900.0" cy="209.1" r="7" fill="#7FC49A"/><text x="888.0" y="193.1" text-anchor="end">~₮58,000</text><text class="s" x="888.0" y="211.1" text-anchor="end">Nov 2026</text></g></svg>
-      </div>
-      <div class="ttlside">
-        <div class="node a r" style="--d:600"><div class="num" style="color:var(--up)">×20</div><p>from the 2016 low (~₮2,800) to ~₮58,000 in 2026</p></div>
-        <div class="node a r" style="--d:800"><div class="num" style="color:var(--gold);font-size:38px">₮28,080–60,550</div><p>trading range over the last 52 weeks</p></div>
-        <div class="node a r" style="--d:1000"><div class="num" style="font-size:38px">52.7M shares</div><p>≈₮3 trillion market value at ~₮58,000 a share</p></div>
-        <div class="node a r" style="--d:1200"><p style="color:var(--ink);font-size:18px;margin:0"><strong>Not the same as ETT.</strong> TTL is a separate company, registered on the Mongolian Stock Exchange in 1995, with state participation.</p></div>
-      </div>
-    </div>
-    <div class="src">Mongolian Stock Exchange (mse.mn), Tavan Tolgoi JSC (TTL) page, 23 Nov 2026. Yearly prices read from the MSE chart; approximate. Market value is calculated.</div>
-  </section>
-  <!-- EXPLORE -->
-  <section data-key="p3" class="slide" data-notes="Before a mine, someone has to find it. Companies with exploration licences spent a record 467 billion tugrik searching for deposits in 2023, more than in the 2012 boom, and spending stayed high in 2024. The biggest cost is drilling. Interest keeps rising: tender applications for new exploration areas jumped from 173 in 2024 to 754 in 2025.">
-    <div class="kicker a">Core 13 <b>· Part 3 · Exploration</b></div>
+    <section class="slide" data-notes="Before a mine, someone has to find it. Companies with exploration licences spent a record 467 billion tugrik searching for deposits in 2023, more than in the 2012 boom, and spending stayed high in 2024. The biggest cost is drilling. Interest keeps rising: tender applications for new exploration areas jumped from 173 in 2024 to 754 in 2025.">
+    <div class="kicker a">Core 13 <b>· Part 3 · <span class="kq">How do we find more?</span> · Exploration</b></div>
     <h2 class="a" style="--d:100">Record money spent <em>searching</em></h2>
     <p class="point a" style="--d:180"><span>The point</span>Licence holders spent a record ₮467 billion exploring for new deposits in 2023, more than at the peak of the 2012 boom.</p>
     <div class="exwrap">
@@ -930,39 +805,8 @@ h2 em{font-style:normal;color:var(--copper)}
     <div class="pipe5 a" style="--d:1400"><span>Survey</span><b>→</b><span>Explore &amp; drill</span><b>→</b><span>Register reserves</span><b>→</b><span>Mining licence</span><b>→</b><span>Mine</span><em>Oyu Tolgoi: found in 2001, producing in 2013</em></div>
     <div class="src">MRPAM interview (2019) for 2007–2017; Mongolian Mining Journal (2026) for 2021–24; MRPAM statistics (Nov 2025) for drilling, licences, tenders. Not adjusted for inflation; 2018–20 not published in these sources.</div>
   </section>
-  <!-- SURVEY -->
-  <section class="slide" data-notes="The government is helping find the next big deposit. Only about 47% of Mongolia has a detailed 1 to 50,000 geological map, so half the country is still under-explored. The 2026 state geology budget, 45.3 billion tugrik, is the largest in the agency's history. A state survey across 202,000 square kilometres of the Gobi has already flagged eight promising copper and gold areas.">
-    <div class="kicker a">Core 14 <b>· Part 3 · Mapping the country</b></div>
-    <h2 class="a" style="--d:100">Half the country is still <em>unexplored</em></h2>
-    <p class="point a" style="--d:180"><span>The point</span>Only ~47% of Mongolia has a detailed geological map. The state is funding its biggest survey effort ever to find the next deposits.</p>
-    <div class="survey">
-      <div class="donutbox a z" style="--d:250">
-        <svg viewBox="0 0 42 42" class="mapdonut"><circle cx="21" cy="21" r="15.915" fill="none" stroke="#1B2127" stroke-width="5"/><circle class="seg2" cx="21" cy="21" r="15.915" fill="none" stroke="#E07A3F" stroke-width="5" pathLength="100" style="--len:47.2" stroke-dashoffset="25"/></svg>
-        <div class="dlab"><b>~47%</b><span>mapped at 1:50,000</span></div>
-        <p>22.4% mapped by 1999, another 24.8% since 2000. The rest is room to discover.</p>
-      </div>
-      <div class="sgrid">
-        <div class="node a r" style="--d:500"><div class="num" style="color:var(--gold)">₮45.3B</div><p>2026 state geology budget, the largest in the agency's history</p></div>
-        <div class="node a r" style="--d:650"><div class="num" style="color:var(--sky)">202,000 km²</div><p>surveyed across 5 Gobi provinces, incl. 67,000 km² of high-resolution airborne scans</p></div>
-        <div class="node a r" style="--d:800"><div class="num" style="color:var(--up)">₮49B</div><p>earned from 2026 exploration tenders, more than double the ₮20B target</p></div>
-        <div class="node a r prospects" style="--d:950"><div class="num" style="color:var(--copper)">8 new targets</div><p>copper and gold prospects flagged by the state survey:</p>
-          <div class="chips"><i>Ymaat</i><i>Javkhlant</i><i>Zamiin Khar</i><i>Khazavch</i><i>Khukh Nuden</i><i>Tavan Takhilt</i><i>Murgutsug</i><i>Duulga</i></div></div>
-      </div>
-    </div>
-    <div class="src">Mongolian Mining Journal (2026, National Geological Agency); Ministry of Industry &amp; Mineral Resources investment guide (2026).</div>
-  </section>
-  <!-- PIPELINE -->
-  <section data-key="p4" class="slide" data-notes="Here's where the industry is heading. Oyu Tolgoi's underground mine is ramping up. Erdenet plans a copper smelter so we sell refined copper, not just concentrate. Kharmagtai could be the next big copper-gold mine. France's Orano will mine uranium in the Gobi. A new gold mine opened in 2025, and Tavan Tolgoi is adding a washing plant and new railways.">
-    <div class="kicker a">Core 15 <b>· Part 4 · Expansion</b></div>
-    <h2 class="a" style="--d:100">The next wave of <em>projects</em></h2>
-    <p class="point a" style="--d:180"><span>The point</span>New mines, a copper smelter, uranium and new railways: Mongolian mining is growing in size and moving up the value chain.</p>
-    <div class="pjgrid"><div class="pj a" style="--d:300"><div class="pjh"><b>Oyu Tolgoi underground</b><span class="st ramp">Ramping up</span></div><small>Copper</small><p>~500,000 t of copper a year from 2028, among the world's top copper mines</p></div><div class="pj a" style="--d:450"><div class="pjh"><b>Erdenet copper smelter</b><span class="st plan">Planned</span></div><small>Processing</small><p>124,000 t of copper cathode a year, made in Mongolia instead of exported as concentrate</p></div><div class="pj a" style="--d:600"><div class="pjh"><b>Kharmagtai</b><span class="st plan">Studies done</span></div><small>Copper-gold</small><p>~75,000 t copper + 165,000 oz gold a year for ~30 years (Xanadu &amp; Zijin)</p></div><div class="pj a" style="--d:750"><div class="pjh"><b>Zuuvch Ovoo uranium</b><span class="st plan">Agreement signed</span></div><small>with France's Orano</small><p>$1.6B investment, 2,500 t uranium a year, 1,600 jobs, 30+ years</p></div><div class="pj a" style="--d:900"><div class="pjh"><b>Bayan Khundii gold</b><span class="st live">Producing</span></div><small>Gold</small><p>First gold poured in September 2025</p></div><div class="pj a" style="--d:1050"><div class="pjh"><b>Tavan Tolgoi growth</b><span class="st ramp">Building</span></div><small>Coal + rail</small><p>35 Mt output planned for 2026, a 10 Mt/yr washing plant, 267 km and 416 km rail lines</p></div></div>
-    <div class="legendrow a" style="--d:1300;margin-top:14px"><span><i class="st live" style="width:14px;height:14px;border-radius:50%"></i>Producing</span><span><i class="st ramp" style="width:14px;height:14px;border-radius:50%"></i>Building / ramping up</span><span><i class="st plan" style="width:14px;height:14px;border-radius:50%"></i>Planned / studies</span></div>
-    <div class="src">Rio Tinto; SMM (Erdenet smelter); GBR Mongolia Mining 2025 (Kharmagtai, Bayan Khundii); Badrakh Energy / Ministry guide 2026 (uranium, ETT plans, MMC).</div>
-  </section>
-  <!-- COMPANIES -->
-  <section class="slide" data-notes="Same five facts for each of the three biggest miners. Together they paid about 6.2 trillion tugrik in taxes and fees in 2025. Oyu Tolgoi is a partnership with Rio Tinto, ETT is 73.5% state and 26.4% owned by 3.4 million citizens, and Erdenet is state-controlled.">
-    <div class="kicker a">Core 08 <b>· Part 4 · Who runs the mines</b></div>
+    <section class="slide" data-notes="Same five facts for each of the three biggest miners. Together they paid about 6.2 trillion tugrik in taxes and fees in 2025. Oyu Tolgoi is a partnership with Rio Tinto, ETT is 73.5% state and 26.4% owned by 3.4 million citizens, and Erdenet is state-controlled.">
+    <div class="kicker a">Core 08 <b>· Part 4 · <span class="kq">How are we growing?</span> · Who runs the mines</b></div>
     <h2 class="a" style="--d:100">Three giants, <em>₮6.2 trillion</em> in taxes</h2>
     <p class="point a" style="--d:180"><span>The point</span>The three biggest miners paid about ₮6.2 trillion in taxes and fees in 2025. Mongolians own part of all three, and 3.4 million citizens hold ETT shares directly.</p>
     <div class="ctable a" style="--d:300">
@@ -998,40 +842,8 @@ h2 em{font-style:normal;color:var(--copper)}
     </div>
     <div class="src">*Concentrate is processed ore, not pure copper. OT tax converted at ≈₮3,500/$. Sources: Oyu Tolgoi Q4 2025; Argus; Mongolian Mining Journal (ETT, Erdenet 2025); Ministry of Industry &amp; Mineral Resources investment guide (2026).</div>
   </section>
-  <!-- MONEY FLOW -->
-  <section class="slide" data-notes="Real Oyu Tolgoi numbers for 2025, drawn to scale. Of $4.99 billion in sales, 35% went to Mongolian suppliers and workers and 13% to taxes, so 48% stayed in Mongolia. The rest paid for imported equipment, loans and new construction. The mine is still growing: copper output heads to about 500,000 tonnes a year from 2028, and the state's first dividends are planned for 2027.">
-    <div class="kicker a">Core 09 <b>· Part 4 · Follow the money</b></div>
-    <h2 class="a" style="--d:100;font-size:76px">Nearly half of every dollar <em>stays here</em></h2>
-    <p class="point a" style="--d:180"><span>The point</span>Oyu Tolgoi 2025, drawn to scale: 35% went to Mongolian suppliers and workers, 13% to taxes. The state's first dividends are planned for 2027.</p>
-    <div class="splitwrap a" style="--d:250">
-      <div class="brk"><div class="b-in" style="width:48%">Stays in Mongolia · 48% · $2.40B</div><div class="b-out" style="width:52%">Imports, loans &amp; reinvestment · 52% · $2.59B</div></div>
-      <div class="sbar">
-        <div class="seg" style="--w:35%;--d:500;--c:#4F8BD6"><b>35%</b><span>Mongolian suppliers &amp; workers</span><em>$1.74B</em></div>
-        <div class="seg" style="--w:13%;--d:800;--c:#E8B94A"><b>13%</b><span>Taxes</span><em>$0.66B</em></div>
-        <div class="seg" style="--w:52%;--d:1100;--c:#5F666E"><b>52%</b><span>Foreign suppliers, loan interest &amp; repayments, new shafts and equipment</span><em>$2.59B</em></div>
-      </div>
-      <div class="sbar-foot mono">OYU TOLGOI 2025 SALES = $4.99B = 100% · DRAWN TO SCALE</div>
-    </div>
-    <div class="owners">
-      <div class="owner a l" style="--d:1500">
-        <div class="oh"><b>What Mongolia receives</b><span>from Oyu Tolgoi</span></div>
-        <div class="orow"><span>Taxes in 2025</span><b>$660M</b><i>≈9% of all state tax revenue</i></div>
-        <div class="orow"><span>Taxes since 2010</span><b>$5.5B</b></div>
-        <div class="orow"><span>Local purchases since 2010</span><b>$14.2B</b><i>from Mongolian companies</i></div>
-        <div class="orow"><span>Workforce</span><b>97%+</b><i>Mongolian</i></div>
-      </div>
-      <div class="owner rio a r" style="--d:1700">
-        <div class="oh"><b>What's next</b><span>the mine is still growing</span></div>
-        <div class="orow"><span>Copper output</span><b>~500,000 t</b><i>a year from 2028</i></div>
-        <div class="orow"><span>First dividends</span><b>2027</b><i>≥₮3T budgeted for the state</i></div>
-        <div class="orow"><span>2026 agreement</span><b>≈₮30T</b><i>in costs cut over the mine's life</i></div>
-      </div>
-    </div>
-    <div class="src">Rio Tinto 2025 results (revenue); Oyu Tolgoi Q4 2025 results (in-country spend $2.4B, taxes); Mongolia Weekly (2026 agreement); ikon.mn (dividends from 2027). The 52% is revenue minus in-country spend.</div>
-  </section>
-  <!-- GEOPOLITICS -->
-  <section class="slide" data-notes="Geography decides a lot. Mongolia has no coastline and only two neighbours, Russia and China. There is no road to the sea that doesn't cross one of them, and the nearest port, Tianjin, is in China, more than 1,300 km from Ulaanbaatar in a straight line. So coal and copper go by truck and rail into China, which buys over 90% of our exports. Russia takes about half a percent. The one product that escapes is gold, which is light enough to fly, mostly to Switzerland. The strategy is called the third neighbour policy: partners like Japan, South Korea, the US, the EU and France, plus more railways so we have more than one door.">
-    <div class="kicker a">Core 18 <b>· Part 4 · Geopolitics</b></div>
+    <section class="slide" data-notes="Geography decides a lot. Mongolia has no coastline and only two neighbours, Russia and China. There is no road to the sea that doesn't cross one of them, and the nearest port, Tianjin, is in China, more than 1,300 km from Ulaanbaatar in a straight line. So coal and copper go by truck and rail into China, which buys over 90% of our exports. Russia takes about half a percent. The one product that escapes is gold, which is light enough to fly, mostly to Switzerland. The strategy is called the third neighbour policy: partners like Japan, South Korea, the US, the EU and France, plus more railways so we have more than one door.">
+    <div class="kicker a">Core 18 <b>· Part 4 · <span class="kq">How are we growing?</span> · Geopolitics</b></div>
     <h2 class="a" style="--d:100">Landlocked between <em>two giants</em></h2>
     <p class="point a" style="--d:180"><span>The point</span>No coastline and only two neighbours, so coal and copper can only leave by road and rail: 89.4% of exports go into China. Only gold escapes, by plane.</p>
     <div class="geowrap">
@@ -1044,83 +856,44 @@ h2 em{font-style:normal;color:var(--copper)}
     </div>
     <div class="src">Borders: Natural Earth; routes simplified. 2025 exports &amp; Russia’s share of imports: Invest Mongolia (customs data). Russia ≈0.5% of exports: Mongolian Customs, Jan–Apr 2025. Tianjin: straight line; Vladivostok: by rail.</div>
   </section>
-  <!-- PLANS -->
-  <section class="slide" data-notes="Mining has challenges, and each one already has a plan in motion. To depend less on one buyer, Mongolia is adding partners like France and South Korea. To ride out price swings, it is building plants to sell processed products. To protect land and water, companies are adopting international standards. And to attract explorers, tenders and data are opening up.">
-    <div class="bgphoto" style="background-image:url(img/horses.jpg);--o:.18"></div>
-    <div class="kicker a">Core 18 <b>· Part 4 · Growing smarter</b></div>
-    <h2 class="a" style="--d:100">Growing <em>smarter</em>, not just bigger</h2>
-    <p class="point a" style="--d:180"><span>The point</span>Every big challenge already has a plan in motion.</p>
-    <div class="plans">
-      <div class="ph2">Challenge</div><div class="ph2"></div><div class="ph2">Plan in motion</div>
-      <div class="ch2 a l" style="--d:300">One main buyer</div><div class="ar2 a" style="--d:350">→</div><div class="pl2 a r" style="--d:400"><b>New partners</b>France's Orano ($1.6B uranium), a minerals pact with South Korea, new border railways</div>
-      <div class="ch2 a l" style="--d:550">Price swings</div><div class="ar2 a" style="--d:600">→</div><div class="pl2 a r" style="--d:650"><b>Sell processed products</b>coal washing, the Erdenet smelter, 6 industrial parks ($5.4B, 10,700+ jobs)</div>
-      <div class="ch2 a l" style="--d:800">Land &amp; water</div><div class="ar2 a" style="--d:850">→</div><div class="pl2 a r" style="--d:900"><b>Global standards</b>Towards Sustainable Mining, adopted with the Mining Association of Canada in 2024</div>
-      <div class="ch2 a l" style="--d:1050">Slow licensing</div><div class="ar2 a" style="--d:1100">→</div><div class="pl2 a r" style="--d:1150"><b>Open tenders &amp; data</b>58 exploration plots tendered in 2026; survey data on 1.9M ha being made public</div>
+  <section class="slide" data-notes="Be honest here, judges respect it. Mining changed nomadic life in three ways. Water: Oyu Tolgoi diverted the Undai River, the only local water that didn't freeze in winter, and the sacred Bor Ovoo spring ended up behind the fence. Pasture: herders were relocated in 2004, and of 250 compensated households in Khanbogd, fewer than half still herd. Dust: coal trucks on dirt roads killed livestock and covered pasture in dust. The fixes: a 2017 agreement with herders with 60 commitments, 1.2 million dollars for lost livelihoods, deep wells, and river repair. The mine now uses deep salty water and recycles most of it. And the Tavan Tolgoi to Gashuunsukhait railway opened in 2022 to take coal off the dirt roads. Progress is real but unfinished: only 12 of more than 75 recommended wells were built by 2024.">
+    <div class="bgphoto" style="background-image:url(img/horses.jpg);--o:.2"></div>
+    <div class="kicker a">Core 09 <b>· Part 4 · <span class="kq">How are we growing?</span> · Culture</b></div>
+    <h2 class="a" style="--d:100">What mining did to <em>nomadic</em> life</h2>
+    <p class="point a" style="--d:180"><span>The point</span>Mines took water, pasture and clean air from herders. Real fixes are under way, but they are not finished.</p>
+    <div class="fx">
+      <div class="fxh"></div><div class="fxh bad">What mining changed</div><div class="fxh"></div><div class="fxh good">What is being done</div><div class="fxh">Progress</div>
+      <div class="fxi a l" style="--d:300">💧<b>Water</b></div>
+      <div class="fxc bad a l" style="--d:350">Oyu Tolgoi diverted the <b>Undai River</b>, the only local water that didn't freeze in winter. The sacred <b>Bor Ovoo</b> spring ended up behind the mine fence.</div>
+      <div class="fxa a" style="--d:500">→</div>
+      <div class="fxc good a r" style="--d:600">New deep wells and river repair promised in a <b>2017 herder agreement</b>. The mine pumps salty water from far below herders' wells and recycles <b>~88%</b>.</div>
+      <div class="fxp a" style="--d:700"><div class="pb"><i style="--w:16%"></i></div><span><b>12 of 75+</b> wells built (2024)</span></div>
+      <div class="fxi a l" style="--d:900">🐑<b>Pasture</b></div>
+      <div class="fxc bad a l" style="--d:950">Herders were moved off mine land in 2004. Of <b>250</b> compensated households in Khanbogd, <b>fewer than half</b> still herd.</div>
+      <div class="fxa a" style="--d:1100">→</div>
+      <div class="fxc good a r" style="--d:1200"><b>$1.2M</b> for lost livelihoods, <b>60 commitments</b>: pasture and market access, scholarships for herders' children, 10,000 trees.</div>
+      <div class="fxp a" style="--d:1300"><div class="pb"><i style="--w:67%"></i></div><span><b>⅔</b> done or under way (2020)</span></div>
+      <div class="fxi a l" style="--d:1500">🚚<b>Dust</b></div>
+      <div class="fxc bad a l" style="--d:1550">Coal trucks on <b>dirt roads</b> to China killed livestock and covered pasture in dust.</div>
+      <div class="fxa a" style="--d:1700">→</div>
+      <div class="fxc good a r" style="--d:1800"><b>233.6 km railway</b> Tavan Tolgoi → Gashuunsukhait, built to cut pasture damage, dust and noise.</div>
+      <div class="fxp a" style="--d:1900"><div class="pb"><i style="--w:100%"></i></div><span><b>Open</b> since Sept 2022</span></div>
     </div>
-    <div class="credit">Photo: Alex Ang, CC BY-SA 3.0</div>
-    <div class="src">Ministry of Industry &amp; Mineral Resources investment guide (2026); Korea JoongAng Daily; Mongolian Mining Journal (2026).</div>
+    <div class="cbar a" style="--d:2200"><b>Still to do:</b> finish the wells and pasture promises, and keep herders at the table for every new mine.</div>
+    <div class="credit">Photo: Mongolian horses, Alex Ang, CC BY-SA 3.0</div>
+    <div class="src">Mongabay (Aug 2024) on Oyu Tolgoi, the 2017 CAO agreement and its progress; CAO joint statement (May 2017); Oyu Tolgoi/Turquoise Hill water data (2020: 87.7% recycled); Dialogue Earth (2024) on coal trucks; Embassy of Mongolia on the railway opening.</div>
   </section>
-  <!-- CONCLUSION -->
-  <section data-key="concl" class="slide" data-notes="Our four answers. One: Mongolia has world-class reserves, and mining is the economy. Two: copper is taking the lead from coal. Three: exploration is at record levels and half the country is still unmapped. Four: a new wave of projects is coming, and nearly half of every mining dollar already stays in Mongolia. Our recommendation: keep exploring, process at home, build the links, and save for the future.">
+    <section data-key="concl" class="slide" data-notes="Our four answers. One: Mongolia has world-class reserves, and mining is the economy. Two: copper is taking the lead from coal. Three: exploration is at record levels and half the country is still unmapped. Four: we grow smarter, with ₮6.2 trillion in taxes, partners beyond China, and respect for herders. Our recommendation: keep exploring, process at home, open more doors, and respect the steppe. Thank you, any questions?">
     <div class="kicker a">Core 19 <b>· Conclusion</b></div>
     <h2 class="a" style="--d:100">What we <em>found</em></h2>
     <div class="concl">
-      <div class="cr a l" style="--d:250"><i>1</i><div class="q">What do we have?</div><div class="ans"><b>World-class reserves</b><span>59.6 Mt copper, 39.7 Bt coal; mining is ~29% of GDP and 92% of exports.</span></div></div>
+      <div class="cr a l" style="--d:250"><i>1</i><div class="q">What do we have?</div><div class="ans"><b>World-class reserves</b><span>Mining is ~29% of GDP and 92% of exports; per person we hold 85–240× the world average of key minerals.</span></div></div>
       <div class="cr a l" style="--d:450"><i>2</i><div class="q">What is it worth?</div><div class="ans"><b>Copper is taking the lead</b><span>44% of exports in 2026, ahead of coal, while coal volume hit a record 90 Mt.</span></div></div>
       <div class="cr a l" style="--d:650"><i>3</i><div class="q">How do we find more?</div><div class="ans"><b>Exploration at record levels</b><span>₮467B spent in 2023, a record state survey budget, and half the country left to map.</span></div></div>
-      <div class="cr a l" style="--d:850"><i>4</i><div class="q">How are we growing?</div><div class="ans"><b>A new wave of projects</b><span>Copper smelter, uranium, Kharmagtai, new rail; 48% of Oyu Tolgoi's sales already stay in Mongolia.</span></div></div>
+      <div class="cr a l" style="--d:850"><i>4</i><div class="q">How are we growing?</div><div class="ans"><b>Smarter, and together</b><span>₮6.2T in taxes from three giants, partners beyond China, and mines learning to share the steppe with herders.</span></div></div>
     </div>
-    <div class="reco a" style="--d:1150"><span>Our recommendation</span><b>Keep exploring</b><b>Process at home</b><b>Build the links</b><b>Save for the future</b></div>
-  </section>
-  <!-- 11 CLOSE -->
-  <section class="slide s-close" data-notes="Finish with the big idea, then open for questions.">
-    <div class="glints">
-      <i style="left:12%;top:18%;--d:0"></i><i style="left:78%;top:14%;--d:800"></i><i style="left:88%;top:70%;--d:1600"></i>
-      <i style="left:30%;top:82%;--d:400"></i><i style="left:62%;top:88%;--d:2000"></i><i style="left:50%;top:10%;--d:1200"></i>
-    </div>
-    <div class="bgphoto" style="background-image:url(img/erdenet-pit.jpg);--o:.3"></div>
-    <div class="kicker a">Core 11 <b>· Thank you</b></div>
-    <p class="big a" style="--d:200">Minerals run out.<br><span>Skills, savings</span><br>and smart deals don't.</p>
-    <p class="q a" style="--d:700"><strong>Thank you.</strong> Questions?</p>
-    <div class="credit">Photo: Erdenet, ido cga, CC BY 2.0</div>
-  </section>
-  <!-- 12 SOURCES -->
-  <section class="slide" data-notes="Sources slide; leave it up during questions if judges ask.">
-    <div class="kicker a">Core 12 <b>· Sources</b></div>
-    <h2 class="a" style="--d:100;font-size:72px">Sources</h2>
-    <div class="srcs a" style="--d:250">
-      <p><b>East Asia Forum</b>, "The hidden cost of Mongolia's mining boom" (Feb 2025) — 28.7% GDP, 92.1% exports, 31.6% revenue (2023)<br><a href="https://eastasiaforum.org/2025/02/07/the-hidden-cost-of-mongolias-mining-boom/" target="_blank" rel="noopener">eastasiaforum.org</a></p>
-      <p><b>Ministry of Economy &amp; Development</b>, Monthly Macro Update (Oct 2025) — mining +8.2% Q3 2025<br><a href="https://med.gov.mn/uploads/users/3962/files/M25-10EN.pdf" target="_blank" rel="noopener">med.gov.mn</a></p>
-      <p><b>ADB Brief 397</b>, Climate-smart critical minerals mining in Mongolia — export shares, mineral list<br><a href="https://www.adb.org/sites/default/files/publication/1154931/adb-brief-397-climate-smart-critical-minerals-mining-mongolia.pdf" target="_blank" rel="noopener">adb.org</a></p>
-      <p><b>Rio Tinto</b>, Oyu Tolgoi — ownership, 500 kt target, EVs, 4th largest by 2030, Oct 2026 seismic event<br><a href="https://www.riotinto.com/en/operations/mongolia/oyu-tolgoi" target="_blank" rel="noopener">riotinto.com</a></p>
-      <p><b>Argus Media</b> (Jan 2026) — Oyu Tolgoi 345,000 t in 2025, +61%<br><a href="https://www.argusmedia.com/ja/news-and-insights/latest-market-news/2778240-rio-tinto-raises-global-copper-output-in-2025" target="_blank" rel="noopener">argusmedia.com</a></p>
-      <p><b>E&amp;MJ</b> — 1.3 km underground<br><a href="https://www.e-mj.com/leading-developments/rio-tinto-celebrates-underground-production-at-oyu-tolgoi/" target="_blank" rel="noopener">e-mj.com</a></p>
-      <p><b>Mysteel</b> (Jan 2026) — 90.02 Mt coal, $5.77B, $64.09/t<br><a href="https://www.mysteel.net/news/5109865-mongolias-2025-coal-exports-top-annual-target-set-new-record-high" target="_blank" rel="noopener">mysteel.net</a></p>
-      <p><b>Mining Weekly</b> (Feb 2025) — 31 / 70 / 83 Mt, 240 km railway<br><a href="https://www.miningweekly.com/article/mongolia-seeks-to-boost-coal-exports-to-china-with-new-rail-link-2025-02-07" target="_blank" rel="noopener">miningweekly.com</a></p>
-      <p><b>S&amp;P Global</b> (Jun 2026) — 60.07 Mt, 51% of China's coking-coal imports<br><a href="https://www.spglobal.com/energy/en/news-research/latest-news/metals/061926-ferrous-week-mongolia-evolves-from-single-tree-to-chinas-met-coal-lifeline" target="_blank" rel="noopener">spglobal.com</a></p>
-      <p><b>Mongolian Mining Journal</b> — ETT 28.7 Mt, ₮1.7T taxes, Savings Fund, processing plant, exchange<br><a href="https://www.mongolianminingjournal.com/a/74878" target="_blank" rel="noopener">mongolianminingjournal.com</a></p>
-      <p><b>bne IntelliNews</b> — over 90% of exports to China<br><a href="https://www.intellinews.com/when-china-sneezes-mongolia-catches-a-cold-393459" target="_blank" rel="noopener">intellinews.com</a></p>
-      <p><b>Oyu Tolgoi</b>, Q4 2025 results — $660M taxes 2025, $5.5B since 2010, $479M with 571 suppliers<br><a href="https://www.ot.mn/en/news/q4-2025-performance-results" target="_blank" rel="noopener">ot.mn</a></p>
-      <p><b>Rio Tinto</b> (Jun 2026) — shareholder loan and distributions deal<br><a href="https://www.riotinto.com/en/news/releases/2026/rio-tinto-and-government-of-mongolia-agree-to-adjust-oyu-tolgoi-shareholder-loan-interest-rate" target="_blank" rel="noopener">riotinto.com</a></p>
-      <p><b>Ministry of Labour &amp; Social Protection</b> — National Wealth Fund citizen accounts, ₮135,000<br><a href="https://mlsp.gov.mn/eng/content/detail/1873" target="_blank" rel="noopener">mlsp.gov.mn</a></p>
-      <p><b>Erdenet Mining Corp</b>; <b>UB Post</b> (2016); <b>Mining Weekly</b> (2018) — Erdenet history and ownership<br><a href="https://erdenetmc.mn/en/about" target="_blank" rel="noopener">erdenetmc.mn</a></p>
-      <p><b>Rio Tinto 2025 results</b> — Oyu Tolgoi segment revenue $4,992M<br><a href="https://www.sec.gov/Archives/edgar/data/863064/000162828026009503/ye25-pressreleasex19feb.htm" target="_blank" rel="noopener">sec.gov</a></p>
-      <p><b>Export data by year</b> — AKIpress (2020–21 coal); USGS yearbooks 2020–23; bne IntelliNews (2023); MED Dec 2025; APIP; ArdNews (Jan–Sep 2026)<br><a href="https://med.gov.mn/uploads/users/3962/files/M25-12EN.pdf" target="_blank" rel="noopener">med.gov.mn</a></p>
-      <p><b>Mongolian Stock Exchange</b> — Tavan Tolgoi JSC (TTL) price, shares, 52-week range<br><a href="https://mse.mn/en/company/458?type=5" target="_blank" rel="noopener">mse.mn</a></p>
-      <p><b>Mongolian Mining Journal</b> — Erdenet 2025: 574 kt concentrate, ₮2.2T taxes<br><a href="https://www.mongolianminingjournal.com/a/74826" target="_blank" rel="noopener">mongolianminingjournal.com</a></p>
-      <p><b>Mongolia Weekly</b> (Jun &amp; Sep 2026) — fee halved, loan SOFR+6.5% → SOFR+4%, ≈₮30T savings, ≥₮3T in 2027 budget<br><a href="https://www.mongoliaweekly.org/post/rio-tinto-and-mongolia-revise-oyu-tolgoi-terms-targeting-first-dividends-in-2027" target="_blank" rel="noopener">mongoliaweekly.org</a></p>
-      <p><b>ikon.mn</b> (11 Nov 2026) — OT letter: dividends from 2027, ₮3T on top of taxes<br><a href="https://ikon.mn/n/3rml" target="_blank" rel="noopener">ikon.mn</a></p>
-      <p><b>National Statistics Office</b> — GDP and mining value added, 2000–2025<br><a href="https://www.1212.mn" target="_blank" rel="noopener">1212.mn</a></p>
-      <p><b>MRPAM statistics</b> (Nov 2025) — licences, tender applications, drilling spend<br><a href="https://mrpam.gov.mn/public/pages/715/2025.11.stat.report.eng.pdf" target="_blank" rel="noopener">mrpam.gov.mn</a></p>
-      <p><b>MRPAM interview</b> (2019) — exploration spending 2007–2017<br><a href="https://mrpam.gov.mn/news/m-enkhjargal-khurungu-oruulagchdyn-sonirkhlyg-tatakhuits-khaiguulyn-shine-talbai-shaardlagatai" target="_blank" rel="noopener">mrpam.gov.mn</a></p>
-      <p><b>Ministry of Industry &amp; Mineral Resources</b> investment guide (2026) — reserves, state survey, projects, ETT ownership<br><a href="https://mrpam.gov.mn/public/pages/719/Mongoliainc%20Report%20-%20Mining%20Edit%202026-2-20%20(1).pdf" target="_blank" rel="noopener">mrpam.gov.mn</a></p>
-      <p><b>Mongolian Mining Journal</b> (2026) — exploration 2021–24, mapping coverage, 2026 geology budget, tenders<br><a href="https://www.mongolianminingjournal.com/a/74968" target="_blank" rel="noopener">mongolianminingjournal.com</a></p>
-      <p><b>Korea JoongAng Daily</b> — Korea–Mongolia minerals partnership<br><a href="https://www.koreajoongangdaily.com/business/koreas-mongolian-mineral-bet-may-become-a-geopolitical-tightrope-walk-between-china-russia-and-the-us/12775761" target="_blank" rel="noopener">koreajoongangdaily.com</a></p>
-      <p><b>GBR Mongolia Mining 2025</b> — Kharmagtai, Bayan Khundii, Erdenet<br><a href="https://www.gbreports.com/files/pdf/_2025/Mongolia-Mining_2025-book-web.pdf" target="_blank" rel="noopener">gbreports.com</a></p>
-      <p><b>SMM</b> — Erdenet smelter, 124,000 t cathode<br><a href="https://news.metal.com/newscontent/104162182-mongolia-sets-november-deadline-for-erdenet-smelter-talks-planned-cathode-capacity-at-124000-tonnes-a-year" target="_blank" rel="noopener">news.metal.com</a></p>
-      <p><b>Video</b> — open-pit blast, Pexels free licence<br><a href="https://www.pexels.com/video/huge-explosion-in-the-field-1350924/" target="_blank" rel="noopener">pexels.com</a></p>
-      <p><b>Photos, Wikimedia Commons</b> — Brücke-Osteuropa (public domain): Erdenet, Tavan Tolgoi, Oyu Tolgoi, coal truck, ore; Alex Ang (CC BY-SA 3.0): blast, horses; Kelapstick (CC BY-SA 3.0): Oyu Tolgoi shafts; ido cga (CC BY 2.0): Erdenet panorama<br><a href="https://commons.wikimedia.org" target="_blank" rel="noopener">commons.wikimedia.org</a></p>
-    </div>
+    <div class="reco a" style="--d:1150"><span>Our recommendation</span><b>Keep exploring</b><b>Process at home</b><b>More than one door</b><b>Respect the steppe</b></div>
+    <p class="thanks a" style="--d:1500"><strong>Thank you.</strong> Questions? <span>— 12C</span></p>
   </section>
 </div>
 
@@ -1159,7 +932,7 @@ if(bvid){bvid.addEventListener('timeupdate',()=>{if(!fired&&bvid.currentTime>=0.
   const rp=document.getElementById('replay');rp.addEventListener('click',e=>{e.stopPropagation();blastStart();});
   addEventListener('keydown',e=>{if((e.key==='r'||e.key==='R')&&slides[cur]===bslide)blastStart();});}
 /* blast debris */
-const dcv=document.getElementById('debris'),dcx=dcv.getContext('2d');let parts=[],boomT=null;
+const dcv=document.getElementById('debris')||document.createElement('canvas'),dcx=dcv.getContext('2d');let parts=[],boomT=null;
 function boom(){parts=[];const R=Math.random;
   for(let i=0;i<200;i++){const a=-Math.PI/2+(R()-.5)*2.8,sp=3+R()*16;parts.push({x:720+(R()-.5)*60,y:470,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r:1.2+R()*4.5,l:1,d:0,c:R()<.3?'224,122,63':'52,42,34'});}
   for(let i=0;i<0;i++){parts.push({x:720+(R()-.5)*160,y:470-R()*60,vx:(R()-.5)*3.2,vy:-.4-R()*2.2,r:18+R()*34,l:1,d:1});}
@@ -1267,7 +1040,7 @@ const wag=document.getElementById('wag');
 let w='<rect x="660" y="96" width="92" height="48" rx="6" fill="#E8B94A"/><rect x="730" y="104" width="16" height="14" rx="2" fill="#2A3B4D"/><rect x="660" y="122" width="92" height="6" fill="#0E1114" opacity=".4"/>';
 for(let k=0;k<7;k++){const x=k*94;w+=`<rect x="${x}" y="108" width="86" height="36" rx="3" fill="#3A4048" stroke="#5F666E"/><path d="M${x+4} 108 Q${x+22} 88 ${x+43} 96 Q${x+64} 86 ${x+82} 108Z" fill="#16191C"/><circle cx="${x+18}" cy="146" r="6" fill="#16191C" stroke="#9AA3A8"/><circle cx="${x+68}" cy="146" r="6" fill="#16191C" stroke="#9AA3A8"/>`;}
 w+='<circle cx="680" cy="146" r="7" fill="#16191C" stroke="#9AA3A8"/><circle cx="734" cy="146" r="7" fill="#16191C" stroke="#9AA3A8"/>';
-wag.innerHTML=w;
+if(wag)wag.innerHTML=w;
 
 /* ---------- title canvas: strata ---------- */
 const cv=document.getElementById('strata'),cx=cv.getContext('2d'),W=1600,H=900,G=600;
